@@ -8,7 +8,8 @@
 </head>
 <body>
 <div class="bg-image"
-     style="background-image: url('https://palchevsky.ru/images/background.jpg'); height: 100vh; overflow: auto">
+     style="background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613467429_28-p-fon-dlya-prezentatsii-tekhnicheskii-stil-41.jpg');
+     height: 100vh; overflow: auto">
     <blockquote class="blockquote text-center"><h1>Добавить тест в систему</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">
@@ -16,23 +17,23 @@
                 <table>
                     <tr>
                         <td>ID теста:</td>
-                        <td><input type="text" th:field="*{id}"></td>
+                        <td><input type="text" required th:field="*{id}"></td>
                     </tr>
                     <tr>
                         <td>Номер класса:</td>
-                        <td><input type="text" th:field="*{class_number}"></td>
+                        <td><input max="11" min="1" type="number" required th:field="*{class_number}"></td>
                     </tr>
                     <tr>
                         <td>Предмет:</td>
-                        <td><input type="text" th:field="*{subject}"></td>
+                        <td><input type="text" required th:field="*{subject}"></td>
                     </tr>
                     <tr>
                         <td>Тема:</td>
-                        <td><input type="text" th:field="*{topic}"></td>
+                        <td><input type="text" required th:field="*{topic}"></td>
                     </tr>
                     <tr>
                         <td>Ссылка на тест:</td>
-                        <td><input type="text" th:field="*{link}"></td>
+                        <td><input type="url" required th:field="*{link}"></td>
                     </tr>
                     <tr>
                         <td>Сложность:</td>
