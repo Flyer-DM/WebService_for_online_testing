@@ -28,6 +28,9 @@ public class AppController {
     @RequestMapping("/new")
     public String showNewTestForm(Model model) {
         Test test = new Test();
+        test.setDifficulty("Простой");
+        String[] difList = new String[]{"Простой", "Средний", "Сложный"};
+        model.addAttribute("difList", difList);
         model.addAttribute("test", test);
         return "new_test";
     }
