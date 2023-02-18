@@ -2,6 +2,8 @@ package com.example.webservice_for_online_testing;
 
 import java.util.List;
 
+import com.example.webservice_for_online_testing.domain.Test;
+import com.example.webservice_for_online_testing.repos.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -15,28 +15,20 @@
             <form action="#" th:action="@{/save}" th:object="${test}" method="post">
                 <table>
                     <tr>
-                        <td>ID студента:</td>
+                        <td>ID теста:</td>
                         <td><input type="text" th:field="*{id}" readonly="readonly"></td>
                     </tr>
                     <tr>
-                        <td>Номер класса:</td>
-                        <td><input max="11" min="1" type="number"  th:field="*{class_number}"></td>
+                        <td><b>Тема теста:</b></td>
+                        <td><input required th:field="*{topic}"></td>
                     </tr>
                     <tr>
-                        <td>Предмет:</td>
-                        <td><input type="text" required th:field="*{subject}"></td>
+                        <td><b>Время начала:</b></td>
+                        <td><input type="date" required th:field="*{start_time}"></td>
                     </tr>
                     <tr>
-                        <td>Тема:</td>
-                        <td><input type="text" required th:field="*{topic}"></td>
-                    </tr>
-                    <tr>
-                        <td>Ссылка на тест:</td>
-                        <td><input type="url" required th:field="*{link}"></td>
-                    </tr>
-                    <tr>
-                        <td>Сложность:</td>
-                        <td><input type="text" required th:field="*{difficulty}"></td>
+                        <td><b>Время окончания:</b></td>
+                        <td><input type="date" required th:field="*{end_time}"></td>
                     </tr>
                     <tr>
                         <td colspan="2">

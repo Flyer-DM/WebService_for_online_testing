@@ -26,26 +26,22 @@
         <thead>
         <tr>
             <th scope="col">ID теста</th>
-            <th scope="col">Номер класса</th>
-            <th scope="col">Предмет</th>
             <th scope="col">Тема</th>
-            <th scope="col">Ссылка</th>
-            <th scope="col">Сложность</th>
-            <th scope="col">Действия</th>
+            <th scope="col">Время начала</th>
+            <th scope="col">Время окончания</th>
+            <th scope="col">Результат</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="test: ${listTests}">
             <th scope="row" class="text-black" th:text="${test.id}">ID теста отсутствует</th>
-            <th scope="row" class="text-black" th:text="${test.class_number}">Номер теста отсутствует</th>
-            <th scope="row" class="text-black" th:text="${test.subject}">Предмет теста отсутствует</th>
             <th scope="row" class="text-black" th:text="${test.topic}">Тема теста отсутствует</th>
-            <th>
-                <a th:href="${test.link}" th:text="${test.link}" target="_blank" />
-            </th>
-            <th scope="row" class="text-black" th:text="${test.difficulty}">Сложность теста отсутствует</th>
+            <th scope="row" class="text-black" th:text="${test.start_time}">Время начала теста отсутствует</th>
+            <th scope="row" class="text-black" th:text="${test.end_time}">Время окончания теста отсутствует</th>
+            <th scope="row" class="text-black" th:text="${test.result}">Результат теста отсутствует</th>
             <td>
-                <a th:href="@{'/edit/'+${test.id}}"><button type="button" class="btn btn-info">Редактировать</button></a>
+                <a th:href="@{'/edit/'+${test.id}}"><button type="button" class="btn btn-success btn-sm">Редактировать</button></a>
+                <!--a th:href="@{'/edit_questions/'+${test.id}}"><button type="button" class="btn btn-primary">Добавить вопросы</button></a-->
                 <a th:href="@{'/delete/'+${test.id}}"><button type="button" class="btn btn-danger">Удалить</button></a>
             </td>
         </tr>
