@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Test {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)  // автоматическая генерация атрибута ID
     private Long id; // ID
     private String topic; // тема для тестирования
     private String start_time; // время запуска теста
@@ -17,6 +17,12 @@ public class Test {
 
     private String result; // результат тестирования
     public Test() {
+    }
+
+    public Test(String topic, String start_time, String end_time) {
+        this.topic = topic;
+        this.start_time = start_time;
+        this.end_time = end_time;
     }
 
     @Id

@@ -13,12 +13,8 @@
     <blockquote class="blockquote text-center"><h1>Добавить тест в систему</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">
-            <form action="#" th:action="@{/save}" th:object="${test}" method="post">
+            <form action="#" th:action="@{/save_new}" th:object="${test}" method="post">
                 <table>
-                    <tr>
-                        <td><b>ID теста:</b></td>
-                        <td><input type="text" required th:field="*{id}"></td>
-                    </tr>
                     <tr>
                         <td><b>Тема теста:</b></td>
                         <td><input required th:field="*{topic}"></td>

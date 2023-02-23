@@ -10,25 +10,25 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
     @Autowired
-    private TestRepository repo;
+    private TestRepository testRepository;
 
     public List<Test> listAll(String keyword) {
         if (keyword != null) {
-            return repo.search(keyword);
+            return testRepository.search(keyword);
         }
-        return repo.findAll();
+        return testRepository.findAll();
     }
 
     public void save(Test test) {
-        repo.save(test);
+        testRepository.save(test);
     }
 
     public Test get(Long id) {
-        return repo.findById(id).get();
+        return testRepository.findById(id).get();
     }
 
     public void delete(Long id) {
-        repo.deleteById(id);
+        testRepository.deleteById(id);
     }
 
 }
