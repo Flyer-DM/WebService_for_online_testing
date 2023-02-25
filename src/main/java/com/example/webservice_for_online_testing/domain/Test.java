@@ -1,12 +1,10 @@
 package com.example.webservice_for_online_testing.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @Entity
+@Table(name = "test")
 public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)  // автоматическая генерация атрибута ID

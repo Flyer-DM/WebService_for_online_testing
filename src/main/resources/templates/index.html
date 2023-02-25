@@ -10,6 +10,11 @@
 <div class="bg-image"
      style="background-image: url('https://hewlett.org/wp-content/uploads/2020/01/Lightbulb-2082-scaled.jpg');
      height: 100vh; overflow: auto; overflow-x: hidden">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти">
+        </form>
+    </div>
     <blockquote class="blockquote text-center"><h1>Доступные тесты</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">

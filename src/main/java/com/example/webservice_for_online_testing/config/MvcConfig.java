@@ -1,4 +1,4 @@
-package com.example.webservice_for_online_testing;
+package com.example.webservice_for_online_testing.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -9,6 +9,8 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/").setViewName("greeting");
+        registry.addViewController("/index").setViewName("index");
     }
-
 }

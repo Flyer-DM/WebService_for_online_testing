@@ -1,7 +1,9 @@
-package com.example.webservice_for_online_testing;
+package com.example.webservice_for_online_testing.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import com.example.webservice_for_online_testing.TestService;
 import com.example.webservice_for_online_testing.domain.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -16,7 +18,17 @@ public class AppController {
     @Autowired
     private TestService testService;
 
-    @RequestMapping("/")
+    @GetMapping("/")
+    public String greeting() {
+        return "greeting";
+    }
+
+    @GetMapping("/login")
+    public String login_to_index() {
+        return "login";
+    }
+
+    @RequestMapping("/index")
     public String viewHomePage(Model model, @Param("keyword") String keyword) {
         List<Test> listTests = testService.listAll(keyword);
         model.addAttribute("listTests", listTests);
