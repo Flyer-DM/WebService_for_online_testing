@@ -1,10 +1,10 @@
 package com.example.webservice_for_online_testing.controller;
 
 import java.util.List;
-import java.util.Map;
 
-import com.example.webservice_for_online_testing.TestService;
+import com.example.webservice_for_online_testing.service.DataBaseService;
 import com.example.webservice_for_online_testing.domain.Test;
+import com.example.webservice_for_online_testing.domain.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class AppController {
+public class MainController {
 
     @Autowired
-    private TestService testService;
+    private DataBaseService dataBaseService;
 
     @GetMapping("/")
     public String greeting() {
@@ -28,46 +28,57 @@ public class AppController {
         return "login";
     }
 
+    // главная таблица со списком всех тестов со стороны преподавателя
     @RequestMapping("/index")
     public String viewHomePage(Model model, @Param("keyword") String keyword) {
-        List<Test> listTests = testService.listAll(keyword);
+        List<Test> listTests = dataBaseService.listAll(keyword);
         model.addAttribute("listTests", listTests);
         model.addAttribute("keyword", keyword);
         return "index";
     }
 
+    // переход на страницу добавления новой записи о тесте
     @RequestMapping("/new")
     public String showNewTestForm(Model model) {
         Test test = new Test();
         model.addAttribute("test", test);
         return "new_test";
     }
-
+    // редактирование записи о тесте
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveTest(@ModelAttribute("test") Test test) {
-        testService.save(test);
-        return "redirect:/";
+        dataBaseService.saveTest(test);
+        return "redirect:/index";
     }
+    // сохранение новой записи о тесте
     @RequestMapping(value = "/save_new", method = RequestMethod.POST)
     public String saveTest(@RequestParam String topic,
                            @RequestParam String start_time, @RequestParam String end_time) {
         Test test = new Test(topic, start_time, end_time);
-        testService.save(test);
-        return "redirect:/";
+        dataBaseService.saveTest(test);
+        return "redirect:/index";
     }
-
+    // переход на страницу редактирования теста
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditTestForm(@PathVariable(name = "id") Long id) {
         ModelAndView mav = new ModelAndView("edit_test");
-        Test test = testService.get(id);
+        Test test = dataBaseService.getTest(id);
         mav.addObject("test", test);
         return mav;
     }
 
     @RequestMapping("/delete/{id}")
     public String deleteTest(@PathVariable(name = "id") Long id) {
-        testService.delete(id);
-        return "redirect:/";
+        dataBaseService.deleteTest(id);
+        return "redirect:/index";
+    }
+
+    @RequestMapping("edit_questions/{id}")
+    public String showNewQuestionsForm(Model model, @Param("id") Long id) {
+        List<Question> questionList = dataBaseService.listAllTestId(id);
+        model.addAttribute("questionList", questionList);
+        return "edit_questions";
+
     }
 }
 

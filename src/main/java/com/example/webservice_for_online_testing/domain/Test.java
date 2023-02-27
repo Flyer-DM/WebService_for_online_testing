@@ -2,18 +2,28 @@ package com.example.webservice_for_online_testing.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "test")
 public class Test {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)  // автоматическая генерация атрибута ID
     private Long id; // ID
-    private String topic; // тема для тестирования
-    private String start_time; // время запуска теста
-    private String end_time;  // время дедлайна для прохождения
 
+    @Column(name = "topic", nullable = false)
+    private String topic; // тема для тестирования
+    @Column(name = "start_time", nullable = false)
+    private String start_time; // время запуска теста
+    @Column(name = "end_time", nullable = false)
+    private String end_time;  // время дедлайна для прохождения
+    @Column(name = "result")
     private String result; // результат тестирования
+
+    @OneToMany(mappedBy = "test")
+    private List<Question> questions;
     public Test() {
     }
 
