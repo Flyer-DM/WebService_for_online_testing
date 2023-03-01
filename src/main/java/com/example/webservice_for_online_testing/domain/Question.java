@@ -20,6 +20,15 @@ public class Question {
     @Column(name = "answer", nullable = false)
     private String answer; // правильный ответ на вопрос
 
+    public Question() {
+    }
+
+    public Question(Test test_id, String problem, String answer) {
+        this.test_id = test_id;
+        this.problem = problem;
+        this.answer = answer;
+    }
+
     public Long getId() {
         return id;
     }

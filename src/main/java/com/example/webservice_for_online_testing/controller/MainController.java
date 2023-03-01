@@ -18,19 +18,10 @@ public class MainController {
     @Autowired
     private DataBaseService dataBaseService;
 
-    @GetMapping("/")
-    public String greeting() {
-        return "greeting";
-    }
-
-    @GetMapping("/login")
-    public String login_to_index() {
-        return "login";
-    }
 
     // главная таблица со списком всех тестов со стороны преподавателя
     @RequestMapping("/index")
-    public String viewHomePage(Model model, @Param("keyword") String keyword) {
+    public String viewTestsPage(Model model, @Param("keyword") String keyword) {
         List<Test> listTests = dataBaseService.listAll(keyword);
         model.addAttribute("listTests", listTests);
         model.addAttribute("keyword", keyword);
@@ -38,7 +29,7 @@ public class MainController {
     }
 
     // переход на страницу добавления новой записи о тесте
-    @RequestMapping("/new")
+    @RequestMapping("/new_test")
     public String showNewTestForm(Model model) {
         Test test = new Test();
         model.addAttribute("test", test);
@@ -51,7 +42,7 @@ public class MainController {
         return "redirect:/index";
     }
     // сохранение новой записи о тесте
-    @RequestMapping(value = "/save_new", method = RequestMethod.POST)
+    @RequestMapping(value = "/save_new_test", method = RequestMethod.POST)
     public String saveTest(@RequestParam String topic,
                            @RequestParam String start_time, @RequestParam String end_time) {
         Test test = new Test(topic, start_time, end_time);
@@ -71,14 +62,6 @@ public class MainController {
     public String deleteTest(@PathVariable(name = "id") Long id) {
         dataBaseService.deleteTest(id);
         return "redirect:/index";
-    }
-
-    @RequestMapping("edit_questions/{id}")
-    public String showNewQuestionsForm(Model model, @Param("id") Long id) {
-        List<Question> questionList = dataBaseService.listAllTestId(id);
-        model.addAttribute("questionList", questionList);
-        return "edit_questions";
-
     }
 }
 

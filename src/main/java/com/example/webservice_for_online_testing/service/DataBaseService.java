@@ -40,6 +40,7 @@ public class DataBaseService{
         testRepository.deleteById(id);
     }
 
+    // исправить на findById(test_id)
     public List<Question> listAllTestId(Long testId) {
         return questionRepository.search(testId);
     }
