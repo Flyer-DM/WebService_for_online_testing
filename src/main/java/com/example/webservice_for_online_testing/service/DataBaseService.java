@@ -40,8 +40,7 @@ public class DataBaseService{
         testRepository.deleteById(id);
     }
 
-    // исправить на findById(test_id)
-    public List<Question> listAllTestId(Long testId) {
+    public List<Question> listAllTestId(Test testId) {
         return questionRepository.search(testId);
     }
 
@@ -56,6 +55,5 @@ public class DataBaseService{
     public void deleteQuestion(Long id) {
         questionRepository.deleteById(id);
     }
-
 }
 

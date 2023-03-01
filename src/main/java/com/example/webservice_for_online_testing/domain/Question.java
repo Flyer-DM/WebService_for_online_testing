@@ -29,6 +29,10 @@ public class Question {
         this.answer = answer;
     }
 
+    public Question(Test test_id) {
+        this.test_id = test_id;
+    }
+
     public Long getId() {
         return id;
     }

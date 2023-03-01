@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -19,14 +20,17 @@ public class QuestionController {
     private DataBaseService dataBaseService;
 
     @RequestMapping("edit_questions/{id}")
-    public String showNewQuestionsForm(Model model, @Param("id") Long id) {
-        List<Question> questionList = dataBaseService.listAllTestId(id);
-        model.addAttribute("questionList", questionList);
-        model.addAttribute("test_id", id);
-        return "edit_questions";
+    public ModelAndView showNewQuestionsForm(@PathVariable(name = "id") Long id) {
+        ModelAndView mav = new ModelAndView("edit_questions");
+        Test test = dataBaseService.getTest(id);
+        Question question = new Question(test);
+        List<Question> questionList = dataBaseService.listAllTestId(test);
+        mav.addObject("questionList", questionList);
+        mav.addObject("question", question);
+        return mav;
     }
 
-    @RequestMapping(value = "/save_new_question", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/save_new_question", method = RequestMethod.POST)
     public String AddQuestion(Model model,
                               @RequestParam String problem, @RequestParam String answer,
                               @RequestParam Long test_id) {
@@ -37,7 +41,7 @@ public class QuestionController {
         model.addAttribute("questionList", questionList);
         model.addAttribute("test_id", test_id);
         return "edit_questions";
-    }
+    }*/
 
     @RequestMapping("/edit_question/{id}")
     public String deleteQuestion(@PathVariable(name = "id") Long id) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml" lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Информационно-справочная система онлайн-тестирования</title>
@@ -14,20 +14,20 @@
             <input type="submit" value="Выйти">
         </form>
     </div>
-    <blockquote class="blockquote text-center"><h1>Вопросы к тесту <span th:text="${test_id}"></span></h1></blockquote>
+    <blockquote class="blockquote text-center"><h1>Вопросы к тесту</h1></blockquote>
     <form action="#" th:action="@{/save_new_question}" th:object="${question}" method="post">
         <table>
             <tr>
-                <td><b>ID теста:</b></td>
-                <td><input readonly th:field="*{test_id}"></td>
+                <td>ID теста:</td>
+                <td><input type="text" th:field="*{test_id}" readonly="readonly"></td>
             </tr>
             <tr>
                 <td><b>Вопрос:</b></td>
-                <td><input required th:field="*{problem}"></td>
+                <td><input type="text" required th:field="*{problem}"></td>
             </tr>
             <tr>
                 <td><b>Правильный ответ:</b></td>
-                <td><input required th:field="*{answer}"></td>
+                <td><input type="text" required th:field="*{answer}"></td>
             </tr>
             <td>
                 <button type="submit" class="btn btn-primary" data-tooggle="button" aria-pressed="false">Добавить</button>
@@ -46,7 +46,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="question: ${listQuestions}">
+        <tr th:each="question: ${questionList}">
             <th scope="row" class="text-black" th:text="${test_id}"></th>
             <th scope="row" class="text-black" th:text="${question.id}"></th>
             <th scope="row" class="text-black" th:text="${question.problem}"></th>
