@@ -31,16 +31,17 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/save_new_question", method = RequestMethod.POST)
-    public String AddQuestion(Model model,
-                              @RequestParam String problem, @RequestParam String answer,
-                              @RequestParam Long test_id) {
+    public ModelAndView AddQuestion(@RequestParam String problem, @RequestParam String answer,
+                                    @RequestParam Long test_id) {
+        ModelAndView mav = new ModelAndView("edit_questions");
         Test test = dataBaseService.getTest(test_id);
         Question question = new Question(test, problem, answer);
-        dataBaseService.saveQuestion(question);
+        Question emptyQuestion = new Question(test);
+        dataBaseService.saveQuestion(question); // ошибка в момент сохранения
         List<Question> questionList = dataBaseService.listAllTestId(test);
-        model.addAttribute("questionList", questionList);
-        model.addAttribute("test_id", test_id);
-        return "edit_questions";
+        mav.addObject("questionList", questionList);
+        mav.addObject("question", emptyQuestion);
+        return mav;
     }
 
     @RequestMapping("/delete_question/{id}/{test_id}")

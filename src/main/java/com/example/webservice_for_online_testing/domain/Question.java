@@ -9,7 +9,7 @@ public class Question {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)  // автоматическая генерация атрибута ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // автоматическая генерация атрибута ID
     private Long id; // ID
 
     @ManyToOne
