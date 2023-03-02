@@ -20,13 +20,21 @@ public class Question {
     @Column(name = "answer", nullable = false)
     private String answer; // правильный ответ на вопрос
 
+    @Column(name = "variant1", nullable = false)
+    private String variant1; // вариант ответа 1 на вопрос
+
+    @Column(name = "variant2", nullable = false)
+    private String variant2; // вариант ответа 2 на вопрос
+
     public Question() {
     }
 
-    public Question(Test test_id, String problem, String answer) {
+    public Question(Test test_id, String problem, String answer, String variant1, String variant2) {
         this.test_id = test_id;
         this.problem = problem;
         this.answer = answer;
+        this.variant1 = variant1;
+        this.variant2 = variant2;
     }
 
     public Question(Test test_id) {
@@ -63,5 +71,21 @@ public class Question {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getVariant1() {
+        return variant1;
+    }
+
+    public void setVariant1(String variant1) {
+        this.variant1 = variant1;
+    }
+
+    public String getVariant2() {
+        return variant2;
+    }
+
+    public void setVariant2(String variant2) {
+        this.variant2 = variant2;
     }
 }

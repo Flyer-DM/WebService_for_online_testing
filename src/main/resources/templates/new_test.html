@@ -8,7 +8,7 @@
     <link type="text/css" rel="stylesheet" href="../static/css/bg.css" th:href="@{/css/bg.css}">
 </head>
 <body id="edit">
-<div>
+<div class="outer-div">
     <blockquote class="blockquote text-center"><h1>Добавить тест в систему</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">
@@ -26,19 +26,6 @@
                         <td><b>Время окончания:</b></td>
                         <td><input type="date" required th:field="*{end_time}"></td>
                     </tr>
-<!--
-                    <tr>
-			<td><b>Сложность:</b></td>
-                        <td>
-			<input type="text" th:field="*{difficulty}" list="test">
-				<datalist id="test">
-					<option value="Простой">Простой</option>
-					<option value="Средний">Средний</option>
-					<option value="Сложный">Сложный</option>
-				</datalist>
-			</td>
-                    </tr>
--->
                     <tr>
                         <td>
                             <button type="submit" class="btn btn-primary" data-tooggle="button" aria-pressed="false" autocomplete="off">Добавить</button>

@@ -17,3 +17,25 @@
     overflow-y: hidden;
     overflow-x: hidden;
 }
+
+#testing {
+    background-image: url('../images/bg3.jpg');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+table thead th {
+    color: white;
+    font-size:14pt;
+    text-align:left;
+}
+.outer-div
+{
+    position: absolute;
+    bottom: 320px;
+    width: 100%;
+}

@@ -45,8 +45,21 @@
             <th scope="row" class="text-black" th:text="${test.result}"></th>
             <td>
                 <a th:href="@{'/edit/'+${test.id}}"><button type="button" class="btn btn-success btn-sm">Изменить</button></a>
-                <a th:href="@{'/edit_questions/'+${test.id}}"><button type="button" class="btn btn-primary">-></button></a>
-                <a th:href="@{'/delete/'+${test.id}}"><button type="button" class="btn btn-danger">Удалить</button></a>
+                <a th:href="@{'/edit_questions/'+${test.id}}">
+                    <button type="button" class="btn btn-primary">
+                        <img src="https://cdn-icons-png.flaticon.com/512/8727/8727751.png" height="30"/>
+                    </button>
+                </a>
+                <a th:href="@{'/delete/'+${test.id}}">
+                    <button type="button" class="btn btn-danger">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5661/5661832.png" height="30"/>
+                    </button>
+                </a>
+                <a th:href="@{'/student_testing'+'/'+${test.id}}">
+                    <button type="button" class="btn btn-primary">
+                        Пройти
+                    </button>
+                </a>
             </td>
         </tr>
         </tbody>
@@ -73,7 +86,7 @@
 </div>
 <script type="text/javascript">
     function clearSearch() {
-        window.location = "[[@{/}]]";
+        window.location = "[[@{/index}]]";
     }
 </script>
 </body>
