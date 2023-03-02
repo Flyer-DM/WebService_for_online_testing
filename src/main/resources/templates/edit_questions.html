@@ -47,23 +47,16 @@
         </thead>
         <tbody>
         <tr th:each="question: ${questionList}">
-            <th scope="row" class="text-black" th:text="${test_id}"></th>
+            <th scope="row" class="text-black" th:text="${question.test_id.getId()}"></th>
             <th scope="row" class="text-black" th:text="${question.id}"></th>
             <th scope="row" class="text-black" th:text="${question.problem}"></th>
             <th scope="row" class="text-black" th:text="${question.answer}"></th>
             <td>
-                <a th:href="@{'/delete_question/'+${question.id}}"><button type="button" class="btn btn-danger">Удалить</button></a>
+                <a th:href="@{'/delete_question/'+${question.id}+'/'+${question.test_id.getId()}}"><button type="button" class="btn btn-danger">Удалить</button></a>
             </td>
         </tr>
         </tbody>
     </table>
-    <blockquote class="blockquote text-center">
-        <a href="/new_question">
-            <button type="button" class="btn btn-primary" data-togge="button" aria-pressed="false" autocomplete="off">
-                Добавить вопрос
-            </button>
-        </a>
-    </blockquote>
 </div>
 </body>
 </html>
