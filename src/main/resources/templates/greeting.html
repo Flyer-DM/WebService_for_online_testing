@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Информационно-справочная система онлайн-тестирования</title>
+    <link type="text/css" rel="stylesheet" href="/css/greeting.css" th:href="@{/css/greeting.css}">
 </head>
 <body>
-<div>Добро пожаловать!</div>
-<a th:href="@{/index}">Продолжить</a>
+
+<div>
+    <h2>Вы успешно подключились!<br>Перейдите на свою страницу</h2>
+    <br><br><br><br><br><br><br><br>
+    <form th:action="@{/index_user}" method="post" class="form-signing">
+        <button class="btn btn-lg btn-primary btn-block" id="btn_st" type="submit">Я Студент</button>
+    </form>
+    <form th:action="@{/index}" method="post" class="form-signing">
+        <button class="btn btn-lg btn-primary btn-block" id="btn_tc" type="submit">Я Преподаватель</button>
+    </form>
+</div>
 </body>
 </html>

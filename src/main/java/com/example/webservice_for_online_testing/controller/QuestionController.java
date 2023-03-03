@@ -52,6 +52,6 @@ public class QuestionController {
     // кнопка возврата на index
     @RequestMapping("get_to_index")
     public String backToIndex() {
-        return "redirect:/index";
+        return "redirect:/index_student";
     }
 }
