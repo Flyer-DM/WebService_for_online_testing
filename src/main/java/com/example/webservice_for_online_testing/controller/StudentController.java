@@ -21,15 +21,15 @@ public class StudentController {
 
     @Autowired
     private DataBaseService dataBaseService;
-
-    @RequestMapping("/index_user")
+    // главная страница студента
+    @RequestMapping("/index_student")
     public String viewUserTestsPage(Model model, @Param("keyword") String keyword) {
         List<Test> listTests = dataBaseService.listAll(keyword);
         model.addAttribute("listTests", listTests);
         model.addAttribute("keyword", keyword);
-        return "index_user";
+        return "index_student";
     }
-
+    // переход на страницу с вопросами к тесту
     @RequestMapping("/student_testing/{id}")
     public ModelAndView startTest(@PathVariable(name = "id") Long id) {
         ModelAndView mav = new ModelAndView("student_testing");
@@ -48,6 +48,11 @@ public class StudentController {
         mav.addObject("questionList", shuffledList);
         mav.addObject("question", question);
         return mav;
+    }
+    // кнопка возврата на страницу студента
+    @RequestMapping("get_to_index_student")
+    public String backToIndexStudent() {
+        return "redirect:/index_student";
     }
 
 }

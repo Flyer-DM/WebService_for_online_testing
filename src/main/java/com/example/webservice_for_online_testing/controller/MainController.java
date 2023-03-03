@@ -44,7 +44,7 @@ public class MainController {
     @RequestMapping(value = "/save_new_test", method = RequestMethod.POST)
     public String saveTest(@RequestParam String topic,
                            @RequestParam String start_time, @RequestParam String end_time) {
-        Test test = new Test(topic, start_time, end_time);
+        Test test = new Test(topic, start_time, end_time, "Нет результата");
         dataBaseService.saveTest(test);
         return "redirect:/index";
     }

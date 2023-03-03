@@ -14,6 +14,11 @@
       <input type="submit" value="Выйти">
     </form>
   </div>
+  <div>
+    <form th:action="@{/get_to_index_student}" method="post">
+      <input type="submit" value="Назад">
+    </form>
+  </div>
   <blockquote class="blockquote text-center"><h1>Решение теста <b th:text="${question.test_id.getId()}"></b></h1></blockquote>
   <table id="1" class="table table-striped table-hover">
     <thead>
