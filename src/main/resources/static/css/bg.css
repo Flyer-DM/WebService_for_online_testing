@@ -28,7 +28,7 @@
     overflow-x: hidden;
 }
 
-table thead th {
+thead th {
     color: white;
     font-size:14pt;
     text-align:left;
