@@ -58,14 +58,14 @@ public class StudentController {
     public String backToIndexStudent() {
         return "redirect:/index_student";
     }
-    // сохранение введённых ответов
+    // сохранение введённых ответов, введеение данных студента
     @RequestMapping(value = "save_answers", method = RequestMethod.POST)
     public ModelAndView saveAnswers(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("preresult");
         String[] questionIDs = request.getParameterValues("questionID");  // список ID вопросов в строковом виде
         String[] questionIDAnswers = request.getParameterValues("questionIDAnswer");  // список введёных ответов
-        int length = questionIDs.length, correct = 0, incorrect = 0;
-        String correctAnswer;
+        int length = questionIDs.length, correct = 0, incorrect = 0, skipped = 0;
+        String correctAnswer, percent;
         String test_theme = dataBaseService.getQuestion(Long.parseLong(questionIDs[0])).getTest_id().getTopic();
         Test test = dataBaseService.getQuestion(Long.parseLong(questionIDs[0])).getTest_id();
         StringBuilder result = new StringBuilder(" из ");
@@ -74,16 +74,21 @@ public class StudentController {
 
         for (int i = 0; i < length; i++) {
             correctAnswer = dataBaseService.getQuestion(Long.parseLong(questionIDs[i])).getAnswer();
-            if (Objects.equals(correctAnswer, questionIDAnswers[i])) correct++;
+            if (Objects.equals("--Выберите ответ--", questionIDAnswers[i])) skipped++;
+            else if (Objects.equals(correctAnswer, questionIDAnswers[i])) correct++;
             else incorrect++;
         }
 
         result.insert(0, correct);
         studentResult.setResult(result.toString());
+        percent = String.format("%.2f", (float) correct * 100 / length);
 
         mav.addObject("studentResult", studentResult);
         mav.addObject("correct", correct);
         mav.addObject("incorrect", incorrect);
+        mav.addObject("skipped", skipped);
+        mav.addObject("result", result);
+        mav.addObject("percent", percent);
         mav.addObject("result", result);
         mav.addObject("test_theme", test_theme);
         return mav;
