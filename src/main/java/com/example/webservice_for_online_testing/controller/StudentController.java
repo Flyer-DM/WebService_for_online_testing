@@ -1,20 +1,24 @@
 package com.example.webservice_for_online_testing.controller;
 
 import com.example.webservice_for_online_testing.domain.Question;
+import com.example.webservice_for_online_testing.domain.RandomedQuestion;
+import com.example.webservice_for_online_testing.domain.StudentResult;
 import com.example.webservice_for_online_testing.domain.Test;
 import com.example.webservice_for_online_testing.service.DataBaseService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.example.webservice_for_online_testing.domain.RandomedQuestion;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class StudentController {
@@ -54,5 +58,34 @@ public class StudentController {
     public String backToIndexStudent() {
         return "redirect:/index_student";
     }
+    // сохранение введённых ответов
+    @RequestMapping(value = "save_answers", method = RequestMethod.POST)
+    public ModelAndView saveAnswers(HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("preresult");
+        String[] questionIDs = request.getParameterValues("questionID");  // список ID вопросов в строковом виде
+        String[] questionIDAnswers = request.getParameterValues("questionIDAnswer");  // список введёных ответов
+        int length = questionIDs.length, correct = 0, incorrect = 0;
+        String correctAnswer;
+        String test_theme = dataBaseService.getQuestion(Long.parseLong(questionIDs[0])).getTest_id().getTopic();
+        Test test = dataBaseService.getQuestion(Long.parseLong(questionIDs[0])).getTest_id();
+        StringBuilder result = new StringBuilder(" из ");
+        StudentResult studentResult = new StudentResult(test);
+        result.append(length);
 
+        for (int i = 0; i < length; i++) {
+            correctAnswer = dataBaseService.getQuestion(Long.parseLong(questionIDs[i])).getAnswer();
+            if (Objects.equals(correctAnswer, questionIDAnswers[i])) correct++;
+            else incorrect++;
+        }
+
+        result.insert(0, correct);
+        studentResult.setResult(result.toString());
+
+        mav.addObject("studentResult", studentResult);
+        mav.addObject("correct", correct);
+        mav.addObject("incorrect", incorrect);
+        mav.addObject("result", result);
+        mav.addObject("test_theme", test_theme);
+        return mav;
+    }
 }

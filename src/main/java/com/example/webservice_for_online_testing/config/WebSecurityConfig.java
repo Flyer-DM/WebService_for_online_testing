@@ -20,7 +20,7 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/greeting").permitAll()
                         .requestMatchers("/index", "/new_test", "/edit_test/*", "edit_questions/*").hasRole("TEACHER")
-                        .requestMatchers("/index_student", "/student_testing/*").hasRole("STUDENT")
+                        .requestMatchers("/index_student", "/student_testing/*", "/preresult").hasRole("STUDENT")
                 .anyRequest()
                 .authenticated())
                 .formLogin((form) -> form
