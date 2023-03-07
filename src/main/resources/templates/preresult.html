@@ -10,7 +10,7 @@
 <body id="testing">
 <div class="outer-div">
   <blockquote class="blockquote text-center"><h1>Результат прохождения теста</h1></blockquote>
-  <blockquote class="blockquote text-center"><h1><b th:text="${test_theme}"></b></h1></blockquote>
+  <blockquote class="blockquote text-center"><h1><b th:text="${test.getTopic()}"></b></h1></blockquote>
   <div>
     <form action="#" th:action="@{/save_result}" th:object="${studentResult}" method="post">
       <table>
@@ -46,7 +46,8 @@
           <td><b>Ваше Отчество:</b></td>
           <td><input type="text" required th:field="*{student_patronymic}"></td>
         </tr>
-
+        <input type="hidden" name="test_id" th:value="${test.getId()}">
+        <input type="hidden" name="result" th:value="${result}">
         <tr>
           <td>
             <button type="submit" class="btn btn-primary" data-tooggle="button" aria-pressed="false" autocomplete="off">Сохранить</button>

@@ -18,7 +18,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/greeting", "/css/**", "/js/**").permitAll()
+                .requestMatchers("/greeting", "tests_results", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/index", "/new_test", "/edit_test/*", "edit_questions/*").hasRole("TEACHER")
                         .requestMatchers("/index_student", "/student_testing/*", "/preresult").hasRole("STUDENT")
                 .anyRequest()
