@@ -2,6 +2,7 @@ package com.example.webservice_for_online_testing.controller;
 
 import java.util.List;
 
+import com.example.webservice_for_online_testing.domain.StudentResult;
 import com.example.webservice_for_online_testing.service.DataBaseService;
 import com.example.webservice_for_online_testing.domain.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,11 +57,23 @@ public class MainController {
         mav.addObject("test", test);
         return mav;
     }
-
     @RequestMapping("/delete/{id}")
     public String deleteTest(@PathVariable(name = "id") Long id) {
         dataBaseService.deleteTest(id);
         return "redirect:/index";
+    }
+    // переход на страницу с результатами учеников
+    @RequestMapping(value = "show_results", method = RequestMethod.POST)
+    public String showResults(Model model) {
+        List<StudentResult> listResults = dataBaseService.getAllStudentResults();
+        model.addAttribute("listResults", listResults);
+        return "tests_results";
+    }
+
+    @RequestMapping("/delete_result/{id}")
+    public String deleteResult(@PathVariable(name = "id") Long id) {
+        dataBaseService.deleteStudentResult(id);
+        return "redirect:/tests_results";  // need fixing
     }
 }
 

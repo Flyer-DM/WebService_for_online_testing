@@ -67,7 +67,6 @@ public class StudentController {
         String[] questionIDAnswers = request.getParameterValues("questionIDAnswer");  // список введёных ответов
         int length = questionIDs.length, correct = 0, incorrect = 0, skipped = 0;
         String correctAnswer, percent;
-        String test_theme = dataBaseService.getQuestion(Long.parseLong(questionIDs[0])).getTest_id().getTopic();
         Test test = dataBaseService.getQuestion(Long.parseLong(questionIDs[0])).getTest_id();
         StringBuilder result = new StringBuilder(" из ");
         StudentResult studentResult = new StudentResult(test);
@@ -95,7 +94,7 @@ public class StudentController {
         return mav;
     }
     // сохранение решения в таблицу и открытие таблицы со всеми результатами
-    @RequestMapping(value = "save_result", method = RequestMethod.POST)
+    @RequestMapping(value = "save_results", method = RequestMethod.POST)
     public ModelAndView showAndSaveResult(HttpServletRequest request,
                                           @RequestParam(name = "student_surname") String student_surname,
                                           @RequestParam(name = "student_name") String student_name,
@@ -107,6 +106,8 @@ public class StudentController {
         Test test = dataBaseService.getTest(test_id);
         StudentResult studentResult = new StudentResult(test, student_name, student_surname, student_patronymic, result);
         dataBaseService.saveStudentResult(studentResult);
+        //List<StudentResult> listResults= dataBaseService.getStudentResultsBySurname(student_name, student_surname);
+        //mav.addObject("listResults", listResults);
         return mav;
     }
 }

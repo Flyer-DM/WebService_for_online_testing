@@ -64,9 +64,11 @@ public class DataBaseService{
     public void saveStudentResult(StudentResult studentResult) {
         studentResultRepository.save(studentResult);
     }
-
-    public StudentResult getStudentResult(Long id) {
-        return studentResultRepository.findById(id).get();
+    public List<StudentResult> getAllStudentResults() {
+        return studentResultRepository.findAll();
+    }
+    public List<StudentResult> getStudentResultsBySurname(String name, String surname) {
+        return studentResultRepository.findStudentResultByStudent_surnameAndStudent_name();
     }
 
     public void deleteStudentResult(Long id) {
