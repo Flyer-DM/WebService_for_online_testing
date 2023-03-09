@@ -30,11 +30,10 @@ public class StudentResult {
         this.test_id = test_id;
     }
 
-    public StudentResult(Test test_id, String student_name, String student_surname, String student_patronymic, String result) {
+    public StudentResult(Test test_id, String student_name, String student_surname, String result) {
         this.test_id = test_id;
         this.student_name = student_name;
         this.student_surname = student_surname;
-        this.student_patronymic = student_patronymic;
         this.result = result;
     }
 

@@ -63,7 +63,7 @@ public class MainController {
         return "redirect:/index";
     }
     // переход на страницу с результатами учеников
-    @RequestMapping(value = "show_results", method = RequestMethod.POST)
+    @RequestMapping(value = "/show_results", method = RequestMethod.GET)
     public String showResults(Model model) {
         List<StudentResult> listResults = dataBaseService.getAllStudentResults();
         model.addAttribute("listResults", listResults);
@@ -73,7 +73,7 @@ public class MainController {
     @RequestMapping("/delete_result/{id}")
     public String deleteResult(@PathVariable(name = "id") Long id) {
         dataBaseService.deleteStudentResult(id);
-        return "redirect:/tests_results";  // need fixing
+        return "redirect:/show_results";
     }
 }
 

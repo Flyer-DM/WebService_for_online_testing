@@ -68,7 +68,7 @@ public class DataBaseService{
         return studentResultRepository.findAll();
     }
     public List<StudentResult> getStudentResultsBySurname(String name, String surname) {
-        return studentResultRepository.findStudentResultByStudent_surnameAndStudent_name();
+        return studentResultRepository.findStudentResultBystudent_surnameAndstudent_name(surname, name);
     }
 
     public void deleteStudentResult(Long id) {

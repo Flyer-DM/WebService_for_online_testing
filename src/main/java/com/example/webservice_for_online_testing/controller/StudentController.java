@@ -98,16 +98,19 @@ public class StudentController {
     public ModelAndView showAndSaveResult(HttpServletRequest request,
                                           @RequestParam(name = "student_surname") String student_surname,
                                           @RequestParam(name = "student_name") String student_name,
-                                          @RequestParam(name = "student_patronymic", required = false)
+                                          @RequestParam(name = "student_patronymic", required = false, defaultValue = "")
                                               String student_patronymic) {
         Long test_id = Long.parseLong(request.getParameter("test_id"));
         String result = request.getParameter("result");
-        ModelAndView mav = new ModelAndView("tests_results");
+        ModelAndView mav = new ModelAndView("my_results");
         Test test = dataBaseService.getTest(test_id);
-        StudentResult studentResult = new StudentResult(test, student_name, student_surname, student_patronymic, result);
+        StudentResult studentResult = new StudentResult(test, student_name, student_surname, result);
+        if (!student_patronymic.isEmpty()) {
+            studentResult.setStudent_patronymic(student_patronymic);
+        }
         dataBaseService.saveStudentResult(studentResult);
-        //List<StudentResult> listResults= dataBaseService.getStudentResultsBySurname(student_name, student_surname);
-        //mav.addObject("listResults", listResults);
+        List<StudentResult> listResults= dataBaseService.getStudentResultsBySurname(student_surname, student_name);
+        mav.addObject("listResults", listResults);
         return mav;
     }
 }
