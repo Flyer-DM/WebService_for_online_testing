@@ -19,8 +19,6 @@ public class Test {
     private String start_time; // время запуска теста
     @Column(name = "end_time", nullable = false)
     private String end_time;  // время дедлайна для прохождения
-    @Column(name = "result", nullable = false)
-    private String result; // результат тестирования
 
     @OneToMany(mappedBy = "test")
     private List<Question> questions;
@@ -29,11 +27,10 @@ public class Test {
     public Test() {
     }
 
-    public Test(String topic, String start_time, String end_time, String result) {
+    public Test(String topic, String start_time, String end_time) {
         this.topic = topic;
         this.start_time = start_time;
         this.end_time = end_time;
-        this.result = result;
     }
 
     @Id
@@ -71,11 +68,4 @@ public class Test {
         this.end_time = end_time;
     }
 
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
 }
