@@ -104,6 +104,8 @@ public class StudentController {
         String result = request.getParameter("result");
         ModelAndView mav = new ModelAndView("my_results");
         Test test = dataBaseService.getTest(test_id);
+        Long new_attempts = test.getAttempts();
+        test.setAttempts(new_attempts + 1);
         StudentResult studentResult = new StudentResult(test, student_name, student_surname, result);
         if (!student_patronymic.isEmpty()) {
             studentResult.setStudent_patronymic(student_patronymic);

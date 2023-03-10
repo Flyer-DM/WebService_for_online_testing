@@ -33,7 +33,6 @@
             <th scope="col">Тема</th>
             <th scope="col">Время начала</th>
             <th scope="col">Время окончания</th>
-            <th scope="col">Результат</th>
         </tr>
         </thead>
         <tbody>
@@ -42,7 +41,6 @@
             <th scope="row" class="text-black" th:text="${test.topic}"></th>
             <th scope="row" class="text-black" th:text="${test.start_time}"></th>
             <th scope="row" class="text-black" th:text="${test.end_time}"></th>
-            <th scope="row" class="text-black" th:text="${test.result}"></th>
             <td>
                 <a th:href="@{'/student_testing'+'/'+${test.id}}">
                     <button type="button" class="btn btn-primary">

@@ -20,6 +20,9 @@ public class Test {
     @Column(name = "end_time", nullable = false)
     private String end_time;  // время дедлайна для прохождения
 
+    @Column(name = "attempts")
+    private Long attempts;  // количество прохождений
+
     @OneToMany(mappedBy = "test")
     private List<Question> questions;
     @OneToMany(mappedBy = "test")
@@ -31,6 +34,7 @@ public class Test {
         this.topic = topic;
         this.start_time = start_time;
         this.end_time = end_time;
+        this.attempts = 0L;
     }
 
     @Id
@@ -66,6 +70,14 @@ public class Test {
 
     public void setEnd_time(String end_time) {
         this.end_time = end_time;
+    }
+
+    public Long getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(Long attempts) {
+        this.attempts = attempts;
     }
 
 }
