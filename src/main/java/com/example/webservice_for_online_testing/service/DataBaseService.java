@@ -41,6 +41,10 @@ public class DataBaseService{
         return testRepository.findById(id).get();
     }
 
+    public List<Test> getAll() {
+        return testRepository.findAll();
+    }
+
     public void deleteTest(Long id) {
         testRepository.deleteById(id);
     }

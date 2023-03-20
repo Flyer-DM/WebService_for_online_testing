@@ -75,5 +75,12 @@ public class MainController {
         dataBaseService.deleteStudentResult(id);
         return "redirect:/show_results";
     }
+    // страница с гистограммой
+    @RequestMapping("/histogram")
+    public String viewHistPage(Model model){
+        List<Test> listTests = dataBaseService.getAll();
+        model.addAttribute("listTests", listTests);
+        return "histogram";
+    }
 }
 

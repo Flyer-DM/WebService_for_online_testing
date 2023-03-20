@@ -19,6 +19,12 @@
             <input type="button" class="btn btn-primary" value="Результаты студентов">
         </a>
     </div>
+    <br><br>
+    <div>
+        <a href="/histogram" style='float: right;'>
+            <input type="button" class="btn btn-primary" value="Статистика">
+        </a>
+    </div>
     <blockquote class="blockquote text-center"><h1>Доступные тесты</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">
@@ -52,12 +58,12 @@
                 <a th:href="@{'/edit/'+${test.id}}"><button type="button" class="btn btn-success btn-sm">Изменить</button></a>
                 <a th:href="@{'/edit_questions/'+${test.id}}">
                     <button type="button" class="btn btn-primary">
-                        <img src="https://cdn-icons-png.flaticon.com/512/8727/8727751.png" height="30"/>
+                        <img src="https://cdn-icons-png.flaticon.com/512/8727/8727751.png" height="30" alt="Вопросы"/>
                     </button>
                 </a>
                 <a th:href="@{'/delete/'+${test.id}}">
                     <button type="button" class="btn btn-danger">
-                        <img src="https://cdn-icons-png.flaticon.com/512/5661/5661832.png" height="30"/>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5661/5661832.png" height="30" alt="Удалить"/>
                     </button>
                 </a>
             </td>
