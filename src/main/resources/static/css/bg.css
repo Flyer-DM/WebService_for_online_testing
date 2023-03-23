@@ -1,15 +1,16 @@
 #index {
-    background-image: url('../images/bg1.jpg');
-    height: 100%;
+    background-image: url("https://img.freepik.com/free-vector/geometric-background-concept_23-2148540971.jpg?w=1480&t=st=1679595496~exp=1679596096~hmac=e6eab8d91a48d4fcd2ab965d3b87b099501cbd06e10735f444752cf22d0249b6");
+    height:100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     object-fit: cover;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 #edit {
-    background-image: url('../images/bg2.jpg');
+    background-image: url("https://img.freepik.com/free-vector/flat-geometric-background_23-2148957201.jpg?w=1380&t=st=1679595568~exp=1679596168~hmac=bfeab886758f6f0dff767f75853aede4e4d8507e03c593c2ebab8df583b51c61");
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,7 +20,7 @@
 }
 
 #testing {
-    background-image: url('../images/bg3.jpg');
+    background-image: url("https://img.freepik.com/free-vector/office-supplies-illustration_23-2147491135.jpg?1&w=826&t=st=1679595332~exp=1679595932~hmac=9e0a2e27968df7fddc8c6576ab2a4048976e7a13000777ef6b85636ea6a69c87");
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
