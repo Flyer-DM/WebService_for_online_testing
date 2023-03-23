@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 

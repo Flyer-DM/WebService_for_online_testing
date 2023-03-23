@@ -112,7 +112,16 @@ public class StudentController {
         }
         dataBaseService.saveStudentResult(studentResult);
         List<StudentResult> listResults= dataBaseService.getStudentResultsBySurname(student_surname, student_name);
+        float percentage, a = 0f, b = 0f;
+        String[] rs;
+        for (StudentResult res: listResults) {
+            rs = res.getResult().split(" из ");
+            a += Float.parseFloat(rs[0]);
+            b += Float.parseFloat(rs[1]);
+        }
+        percentage = (float) Math.round(a * 100 / b);
         mav.addObject("listResults", listResults);
+        mav.addObject("percentage", percentage);
         return mav;
     }
 }
