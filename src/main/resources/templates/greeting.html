@@ -11,14 +11,14 @@
     <h2>Вы успешно подключились!<br>Перейдите на свою страницу</h2>
     <br><br><br><br><br><br><br><br>
     <form th:action="@{/index_student}" method="post" class="form-signing">
-        <button class="btn btn-lg btn-primary btn-block" id="btn_st" type="submit">Я Студент</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Я Студент</button>
     </form>
     <form th:action="@{/index}" method="post" class="form-signing">
-        <button class="btn btn-lg btn-primary btn-block" id="btn_tc" type="submit">Я Преподаватель</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Я Преподаватель</button>
     </form>
     <br>
     <form th:action="@{/author}" method="get" class="form-signing">
-        <button class="btn btn-lg btn-primary btn-block" id="btn_author" type="submit">Об авторе</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Об авторе</button>
     </form>
 </div>
 </body>
