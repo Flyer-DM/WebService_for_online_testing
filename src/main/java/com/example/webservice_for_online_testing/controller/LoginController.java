@@ -15,5 +15,9 @@ public class LoginController {
     public String login_to_index() {
         return "login";
     }
+    @GetMapping("/author")
+    public String greeting_to_author() {
+        return "/author";
+    }
 
 }

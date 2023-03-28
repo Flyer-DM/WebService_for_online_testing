@@ -15,14 +15,14 @@
         </form>
     </div>
     <div>
-        <a href="/show_results" style='float: right;'>
+        <a href="/show_results" style='float: right; margin: 1px'>
             <input type="button" class="btn btn-primary" value="Результаты студентов">
         </a>
-    </div>
-    <br><br>
-    <div>
-        <a href="/histogram" style='float: right;'>
+        <a href="/histogram" style='float: right; margin: 1px'>
             <input type="button" class="btn btn-primary" value="Статистика">
+        </a>
+        <a href="/author" style='float: right; margin: 1px'>
+            <input type="button" class="btn btn-primary" value="Об авторе">
         </a>
     </div>
     <blockquote class="blockquote text-center"><h1>Доступные тесты</h1></blockquote>
@@ -30,7 +30,7 @@
         <div class="col-md-8 offset-md-4">
             <h4>Поиск теста по любому критерию:</h4>
             <form th:action="@{/index}">
-                <input type="text" name="keyword" id="keyword" size="70" th:value="${keyword}" required/>
+                <input type="text" name="keyword" id="keyword" size="70" th:value="${keyword}"/>
                 <input type="submit" class="btn btn-success btn-sm" value="Поиск"/>
                 <input type="button" class="btn btn-warning btn-sm" value="Очистить" id="btnClear"
                        onclick="clearSearch()"/>
@@ -72,7 +72,7 @@
         <script src='https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.0.2/tablesort.min.js'></script>
         <script>new Tablesort(document.getElementById('1'));</script>
     </table>
-    <p class="text-white">
+    <p class="text-black">
         <script type="text/javascript">
             function getRowsColumn() {
                 let table = document.getElementById('1')
