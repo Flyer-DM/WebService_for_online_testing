@@ -53,39 +53,22 @@ public class Question {
         return test_id;
     }
 
-    public void setTest_id(Test test_id) {
-        this.test_id = test_id;
-    }
-
     public String getProblem() {
         return problem;
-    }
-
-    public void setProblem(String problem) {
-        this.problem = problem;
     }
 
     public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
 
     public String getVariant1() {
         return variant1;
     }
 
-    public void setVariant1(String variant1) {
-        this.variant1 = variant1;
-    }
 
     public String getVariant2() {
         return variant2;
     }
 
-    public void setVariant2(String variant2) {
-        this.variant2 = variant2;
-    }
 }

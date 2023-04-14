@@ -6,6 +6,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="/css/bg.css" th:href="@{/css/bg.css}">
+    <link type="text/css" rel="stylesheet" href="/css/hrefs.css" th:href="@{/css/hrefs.css}">
+    <script type="text/javascript">
+        function clearSearch() {
+            window.location = "[[@{/index}]]";
+        }
+    </script>
 </head>
 <body id="index">
 <div>
@@ -15,13 +21,13 @@
         </form>
     </div>
     <div>
-        <a href="/show_results" style='float: right; margin: 1px'>
+        <a href="/show_results" class="right-href">
             <input type="button" class="btn btn-primary" value="Результаты студентов">
         </a>
-        <a href="/histogram" style='float: right; margin: 1px'>
+        <a href="/histogram" class="right-href">
             <input type="button" class="btn btn-primary" value="Статистика">
         </a>
-        <a href="/author" style='float: right; margin: 1px'>
+        <a href="/author" class="right-href">
             <input type="button" class="btn btn-primary" value="Об авторе">
         </a>
     </div>
@@ -55,7 +61,9 @@
             <th scope="row" class="text-black" th:text="${test.end_time}"></th>
             <th scope="row" class="text-black" th:text="${test.attempts}"></th>
             <td>
-                <a th:href="@{'/edit/'+${test.id}}"><button type="button" class="btn btn-success btn-sm">Изменить</button></a>
+                <a th:href="@{'/edit/'+${test.id}}">
+                    <button type="button" class="btn btn-success btn-sm">Изменить</button>
+                </a>
                 <a th:href="@{'/edit_questions/'+${test.id}}">
                     <button type="button" class="btn btn-primary">
                         <img src="https://cdn-icons-png.flaticon.com/512/8727/8727751.png" height="30" alt="Вопросы"/>
@@ -73,16 +81,7 @@
         <script>new Tablesort(document.getElementById('1'));</script>
     </table>
     <p class="text-black">
-        <script type="text/javascript">
-            function getRowsColumn() {
-                let table = document.getElementById('1')
-                let tBody = table.querySelector('tbody')
-                const count = tBody.querySelectorAll('tr').length;
-                document.write('Количество тестов в системе: ' + count)
-            }
-
-            getRowsColumn()
-        </script>
+        <script type="text/javascript" src="/static/js/test_counter.js" th:src="@{/js/test_counter.js}"></script>
     </p>
     <blockquote class="blockquote text-center">
         <a href="/new_test">
@@ -92,10 +91,5 @@
         </a>
     </blockquote>
 </div>
-<script type="text/javascript">
-    function clearSearch() {
-        window.location = "[[@{/index}]]";
-    }
-</script>
 </body>
 </html>

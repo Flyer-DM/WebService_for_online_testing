@@ -34,8 +34,7 @@ thead th {
     font-size:14pt;
     text-align:left;
 }
-.outer-div
-{
+.outer-div {
     position: absolute;
     bottom: 320px;
     width: 100%;

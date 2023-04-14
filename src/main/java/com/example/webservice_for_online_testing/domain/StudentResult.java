@@ -49,24 +49,12 @@ public class StudentResult {
         return test_id;
     }
 
-    public void setTest_id(Test test_id) {
-        this.test_id = test_id;
-    }
-
     public String getStudent_name() {
         return student_name;
     }
 
-    public void setStudent_name(String student_name) {
-        this.student_name = student_name;
-    }
-
     public String getStudent_surname() {
         return student_surname;
-    }
-
-    public void setStudent_surname(String student_surname) {
-        this.student_surname = student_surname;
     }
 
     public String getStudent_patronymic() {

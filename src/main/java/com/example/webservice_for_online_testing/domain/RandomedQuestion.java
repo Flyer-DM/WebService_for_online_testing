@@ -7,10 +7,10 @@ import java.util.List;
 public class RandomedQuestion{
 
     private Long id;
-    private String problem;
-    private String answer1;
-    private String answer2;
-    private String answer3;
+    private final String problem;
+    private final String answer1;
+    private final String answer2;
+    private final String answer3;
 
     public RandomedQuestion(Question question) {
         List<String> variants = new ArrayList<>();
@@ -29,24 +29,12 @@ public class RandomedQuestion{
         return answer1;
     }
 
-    public void setAnswer1(String answer1) {
-        this.answer1 = answer1;
-    }
-
     public String getAnswer2() {
         return answer2;
     }
 
-    public void setAnswer2(String answer2) {
-        this.answer2 = answer2;
-    }
-
     public String getAnswer3() {
         return answer3;
-    }
-
-    public void setAnswer3(String answer3) {
-        this.answer3 = answer3;
     }
 
     public Long getId() {
@@ -59,10 +47,6 @@ public class RandomedQuestion{
 
     public String getProblem() {
         return problem;
-    }
-
-    public void setProblem(String problem) {
-        this.problem = problem;
     }
 
 }

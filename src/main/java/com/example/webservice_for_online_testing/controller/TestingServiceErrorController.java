@@ -29,8 +29,9 @@ public class TestingServiceErrorController implements ErrorController {
                 errorPage = "error/404";
             } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
                 errorPage = "error/403";
-            }
-            else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+            } else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
+                errorPage = "error/405";
+            } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 errorPage = "error/500";
             }
         }

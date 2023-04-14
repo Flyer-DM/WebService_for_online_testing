@@ -47,7 +47,6 @@ public class Test {
         this.id = id;
     }
 
-
     public String getTopic() {
         return topic;
     }

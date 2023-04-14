@@ -23,7 +23,7 @@
     </div>
   </div>
   <blockquote class="blockquote text-center">
-    <h1>Решение теста <b th:text="${question.test_id.getId()}"></b></h1>
+    <h1>Решение теста <b th:text="${question.test_id.getTopic()}"></b></h1>
   </blockquote>
   <form method="post" th:action="@{/save_answers}">
     <table id="1" class="table table-striped table-hover">

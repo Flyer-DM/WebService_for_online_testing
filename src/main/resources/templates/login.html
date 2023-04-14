@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru"
-      xmlns:sec="http://www.thymeleaf.org/thymelead-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Вход</title>
@@ -11,7 +10,9 @@
 <body>
 <div>
     <form th:action="@{/login}" method="post" class="form-signing">
-      <h2 style="text-align:center;" class="form-signin-heading">Пожалуйста, войдите в аккаунт<br>преподавателя или студента</h2>
+      <h2 style="text-align:center;" class="form-signin-heading">
+          Пожалуйста, войдите в аккаунт<br>преподавателя или студента
+      </h2>
       <br><br><br><br><br><br><br><br>
       <input type="text" id="log" name="username" placeholder="Логин" required="" autofocus="" />
       <input type="password" id="pswd" name="password" placeholder="Пароль" required=""/>
