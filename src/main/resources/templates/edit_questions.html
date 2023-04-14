@@ -20,7 +20,7 @@
         </form>
     </div>
     <blockquote class="blockquote text-center">
-        <h1>Вопросы к тесту <b th:text="${question.test_id.getId()}"></b></h1>
+        <h1>Вопросы к тесту <b th:text="${question.test_id.id}"></b></h1>
     </blockquote>
     <form action="#" th:action="@{/save_new_question}" th:object="${question}" method="post">
         <table>
@@ -51,12 +51,12 @@
         </thead>
         <tbody>
         <tr th:each="question: ${questionList}">
-            <th scope="row" class="text-black" th:text="${question.test_id.getId()}"></th>
-            <th scope="row" class="text-black" th:text="${question.getId()}"></th>
-            <th scope="row" class="text-black" th:text="${question.getProblem()}"></th>
-            <th scope="row" class="text-black" th:text="${question.getAnswer()}"></th>
+            <th scope="row" class="text-black" th:text="${question.test_id.id}"></th>
+            <th scope="row" class="text-black" th:text="${question.id}"></th>
+            <th scope="row" class="text-black" th:text="${question.problem}"></th>
+            <th scope="row" class="text-black" th:text="${question.answer}"></th>
             <td>
-                <a th:href="@{'/delete_question/'+${question.id}+'/'+${question.test_id.getId()}}">
+                <a th:href="@{'/delete_question/'+${question.id}+'/'+${question.test_id.id}}">
                     <button type="button" class="btn btn-danger">
                         <img src="https://cdn-icons-png.flaticon.com/512/5661/5661832.png" height="30" alt=""/>
                     </button>
