@@ -12,9 +12,22 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Main class that configures all access permissions for different pages for two types of users
+ * @author Kondrashov Dmitry
+ * @version 1.0
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+    /**
+     * Method divides access permission for TEACHER role and USER role
+     * and provides all users for specific pages.
+     * @param http allows configuring web based security for specific http requests.
+     * @return SecurityFilterChain a filter chain which is capable of being matched against an HttpServletRequest
+     * in order to decide whether it applies to that request.
+     * @throws Exception any exception that can possibly raise.
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
@@ -30,6 +43,10 @@ public class WebSecurityConfig {
         return http.build();
     }
 
+    /**
+     * Method save in memory types of users, their names and passwords.
+     * @return UserDetailsService service that saves default names and passwords for two types of users.
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()

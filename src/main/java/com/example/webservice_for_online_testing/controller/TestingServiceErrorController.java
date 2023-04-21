@@ -1,6 +1,5 @@
 package com.example.webservice_for_online_testing.controller;
 
-import ch.qos.logback.core.model.Model;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -9,14 +8,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.boot.web.servlet.error.ErrorController;
+
+/**
+ * Controller for handling server errors
+ * @author Kondrashov Dmitry
+ * @version 1.0
+ */
 @Controller
 public class TestingServiceErrorController implements ErrorController {
 
+    /**
+     * @deprecated
+     */
     public static final Logger LOGGER = LoggerFactory.getLogger(TestingServiceErrorController.class);
 
-    // обработка всех ошибок
+    /**
+     * Method handles errors 404, 403, 405 and 500 and return name of certain page according to the error that occurred.
+     * @param request HttpServletRequest object contains data from html page like ids, names, etc.
+     * @return http name of error page
+     */
     @RequestMapping("/error")
-        public String handleError(HttpServletRequest request, Model model) {
+        public String handleError(HttpServletRequest request) {
 
         String errorPage = null;
 
@@ -37,7 +49,12 @@ public class TestingServiceErrorController implements ErrorController {
         }
         return errorPage;
     }
-    // кнопка возврата на страницу приветствия, в случае возникновения ошибки
+
+    /**
+     * Method used for html button to redirect for greeting page
+     * @return http name of greeting page
+     * See src/main/resources/templates/greeting.html in templates.
+     */
     @RequestMapping("/greeting")
     public String getBack() {
         return "greeting";

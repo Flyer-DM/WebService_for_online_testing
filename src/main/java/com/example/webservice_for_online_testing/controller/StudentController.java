@@ -8,6 +8,7 @@ import com.example.webservice_for_online_testing.service.DataBaseService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,12 +22,40 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Main controller for STUDENT with all mappings those handle all requests from user with ROLE STUDENT.
+ * @see com.example.webservice_for_online_testing.config.WebSecurityConfig
+ * @author Kondrashov Dmitry
+ * @version 1.0
+ */
 @Controller
 public class StudentController {
 
+    /** @see DataBaseService */
+    private final DataBaseService dataBaseService;
+
+    /**
+     * Constructor for Student controller.
+     * @param dataBaseService connects main service for handling all users` modification in database
+     * {@link StudentController#dataBaseService}
+     */
     @Autowired
-    private DataBaseService dataBaseService;
-    // главная страница студента
+    public StudentController(DataBaseService dataBaseService) {
+        this.dataBaseService = dataBaseService;
+    }
+
+    /**
+     * Method opens main page of STUDENT with table of available tests, search bar, sorting by every column.
+     * @see Test Test class
+     * @see StudentController#startTest(Long) Method starts chosen test
+     * @see LoginController#authorPage() Method shows page with information about author
+     * @see com.example.webservice_for_online_testing.config.WebSecurityConfig#securityFilterChain(HttpSecurity)
+     * Method logouts from account
+     * @param model holder to add attributes insert data from java (keyword and list of Test objects)
+     * @param keyword keyword to filter data in search bar.
+     * @return http name of index page
+     * See src/main/resources/templates/index_student.html in templates.
+     */
     @RequestMapping("/index_student")
     public String viewUserTestsPage(Model model, @Param("keyword") String keyword) {
         List<Test> listTests = dataBaseService.listAll(keyword);
@@ -34,7 +63,15 @@ public class StudentController {
         model.addAttribute("keyword", keyword);
         return "index_student";
     }
-    // переход на страницу с вопросами к тесту
+
+    /**
+     * Method opens page with mixed questions and mixed answers for them.
+     * @see Test Test class
+     * @see RandomedQuestion Question class with random variants to answer
+     * @param id id of the Test to collect all its questions in database
+     * @return holder with both Model and View - a html page with some already preset parameters
+     * See src/main/resources/templates/student_testing.html in templates.
+     */
     @RequestMapping("/student_testing/{id}")
     public ModelAndView startTest(@PathVariable(name = "id") Long id) {
         ModelAndView mav = new ModelAndView("student_testing");
@@ -42,7 +79,7 @@ public class StudentController {
         Question question = new Question(test);
         List<Question> questionList = dataBaseService.listAllTestId(test);
 
-        // получение списка перемешанного списка вопросов с перемешанными ответами
+        // getting shuffled list of questions for test with shuffled answers
         List<RandomedQuestion> shuffledList = new ArrayList<>();
         for (Question quest: questionList) {
             RandomedQuestion randomedQuestion = new RandomedQuestion(quest);
@@ -54,17 +91,30 @@ public class StudentController {
         mav.addObject("question", question);
         return mav;
     }
-    // кнопка возврата на страницу студента
+
+    /**
+     * Method used for html button to redirect for student`s main page.
+     * @return redirection for main page
+     * See src/main/resources/templates/index_student.html in templates.
+     */
     @RequestMapping("get_to_index_student")
     public String backToIndexStudent() {
         return "redirect:/index_student";
     }
-    // сохранение введённых ответов, введеение данных студента
+
+    /**
+     * Method collects Student`s answers after testing, calculates result, number of correct answers,
+     * incorrect answers, skipped questions, percentage of correct answers.
+     * Contains a form to insert name and surname of user to save it in database.
+     * @param request HttpServletRequest object contains data from html page like ids, names, etc.
+     * @return holder with both Model and View - a html page with some already preset parameters
+     * See src/main/resources/templates/preresult.html in templates.
+     */
     @RequestMapping(value = "save_answers", method = RequestMethod.POST)
     public ModelAndView saveAnswers(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("preresult");
-        String[] questionIDs = request.getParameterValues("questionID");  // список ID вопросов в строковом виде
-        String[] questionIDAnswers = request.getParameterValues("questionIDAnswer");  // список введёных ответов
+        String[] questionIDs = request.getParameterValues("questionID");  // list of IDs of questions in str
+        String[] questionIDAnswers = request.getParameterValues("questionIDAnswer");  // list of answers
         int length = questionIDs.length, correct = 0, incorrect = 0, skipped = 0;
         String correctAnswer, percent;
         Test test = dataBaseService.getQuestion(Long.parseLong(questionIDs[0])).getTest_id();
@@ -90,16 +140,28 @@ public class StudentController {
         mav.addObject("skipped", skipped);
         mav.addObject("result", result);
         mav.addObject("percent", percent);
-        mav.addObject("result", result);
         return mav;
     }
-    // сохранение решения в таблицу и открытие таблицы со всеми результатами
+
+    /**
+     * Method collects name of the test, student`s personal data, result for testing and saves them to database.
+     * Also, it increments number of attempts for solved test in database. After updating data method opens html page
+     * with all results of the student according his surname and name in database and shows circle diagram that means
+     * average success rate for all tests.
+     * @see StudentResult StudentResult class
+     * @param request HttpServletRequest object contains data from html page like ids, names, etc.
+     * @param student_surname surname of the user to save in database
+     * @param student_name name of the user to save in database
+     * @param student_patronymic patronymic of the user to save in database
+     * @return holder with both Model and View - a html page with some already preset parameters
+     * See src/main/resources/templates/my_results.html in templates.
+     */
     @RequestMapping(value = "save_results", method = RequestMethod.POST)
     public ModelAndView showAndSaveResult(HttpServletRequest request,
                                           @RequestParam(name = "student_surname") String student_surname,
-                                          @RequestParam(name = "student_name") String student_name,
+                                          @RequestParam(name = "student_name")    String student_name,
                                           @RequestParam(name = "student_patronymic", required = false, defaultValue = "")
-                                              String student_patronymic) {
+                                                                                  String student_patronymic) {
         Long test_id = Long.parseLong(request.getParameter("test_id"));
         String result = request.getParameter("result");
         ModelAndView mav = new ModelAndView("my_results");
@@ -111,7 +173,7 @@ public class StudentController {
             studentResult.setStudent_patronymic(student_patronymic);
         }
         dataBaseService.saveStudentResult(studentResult);
-        List<StudentResult> listResults= dataBaseService.getStudentResultsBySurname(student_surname, student_name);
+        List<StudentResult> listResults = dataBaseService.getStudentResultsBySurname(student_surname, student_name);
         float percentage, a = 0f, b = 0f;
         String[] rs;
         for (StudentResult res: listResults) {
