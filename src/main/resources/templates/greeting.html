@@ -6,14 +6,18 @@
     <link type="text/css" rel="stylesheet" href="/css/greeting.css" th:href="@{/css/greeting.css}">
 </head>
 <body>
-
+<div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Выйти">
+    </form>
+</div>
 <div>
     <h2>Вы успешно подключились!<br>Перейдите на свою страницу</h2>
     <br><br><br><br><br><br><br><br>
     <form th:action="@{/index_student}" method="post" class="form-signing">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Я Студент</button>
     </form>
-    <form th:action="@{/index}" method="post" class="form-signing">
+    <form th:action="@{/index_teacher}" method="post" class="form-signing">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Я Преподаватель</button>
     </form>
     <br>

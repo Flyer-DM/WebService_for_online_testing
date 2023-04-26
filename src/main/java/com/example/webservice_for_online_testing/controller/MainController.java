@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Main controller for TEACHER with all mappings those handle pages and requests on index.html page,
+ * Main controller for TEACHER with all mappings those handle pages and requests on index_teacher.html page,
  * that user with ROLE TEACHER has access to.
  * @see com.example.webservice_for_online_testing.config.WebSecurityConfig
  * @author Kondrashov Dmitry
@@ -50,15 +50,15 @@ public class MainController {
      * Method to logout from account
      * @param model holder to add attributes insert data from java (keyword and list of Test objects).
      * @param keyword keyword to filter data in search bar.
-     * @return http name of index page
-     * See src/main/resources/templates/index.html in templates.
+     * @return http name of index_teacher page
+     * See src/main/resources/templates/index_teacher.html in templates.
      */
-    @RequestMapping("/index")
+    @RequestMapping("/index_teacher")
     public String viewTestsPage(Model model, @Param("keyword") String keyword) {
         List<Test> listTests = dataBaseService.listAll(keyword);
         model.addAttribute("listTests", listTests);
         model.addAttribute("keyword", keyword);
-        return "index";
+        return "index_teacher";
     }
 
     /**
@@ -82,12 +82,12 @@ public class MainController {
      * @param test Test object to edit to, got by its id from database
      * @see Test Test class
      * @return redirection for main page
-     * See src/main/resources/templates/index.html in templates.
+     * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveEditedTest(@ModelAttribute("test") Test test) {
         dataBaseService.saveTest(test);
-        return "redirect:/index";
+        return "redirect:/index_teacher";
     }
 
     /**
@@ -97,14 +97,14 @@ public class MainController {
      * @param start_time date that reflects when test need to be started by students (start of the deadline).
      * @param end_time date that reflects when test need to be ended (end of the deadline).
      * @return redirection for main page
-     * See src/main/resources/templates/index.html in templates.
+     * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping(value = "/save_new_test", method = RequestMethod.POST)
     public String saveNewTest(@RequestParam String topic,
                            @RequestParam String start_time, @RequestParam String end_time) {
         Test test = new Test(topic, start_time, end_time);
         dataBaseService.saveTest(test);
-        return "redirect:/index";
+        return "redirect:/index_teacher";
     }
 
     /**
@@ -128,12 +128,12 @@ public class MainController {
      * @see Test Test class
      * @param id (parameter got from url) id of the test that need to be deleted.
      * @return redirection for main page
-     * See src/main/resources/templates/index.html in templates.
+     * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping("/delete/{id}")
     public String deleteTest(@PathVariable(name = "id") Long id) {
         dataBaseService.deleteTest(id);
-        return "redirect:/index";
+        return "redirect:/index_teacher";
     }
 
     /**

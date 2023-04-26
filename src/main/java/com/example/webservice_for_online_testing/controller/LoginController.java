@@ -18,18 +18,6 @@ public class LoginController {
      */
     @GetMapping("/")
     public String greeting() {
-        return "greeting";
-    }
-
-    /**
-     * Mapping handles login page configured by WebSecurityConfig.
-     * @see com.example.webservice_for_online_testing.config.WebSecurityConfig
-     * @return http name of login page
-     * See src/main/resources/templates/login.html in templates.
-     */
-
-    @GetMapping("/login")
-    public String loginToIndex() {
         return "login";
     }
 
@@ -40,7 +28,7 @@ public class LoginController {
      */
     @GetMapping("/author")
     public String authorPage() {
-        return "/author";
+        return "author";
     }
 
 }

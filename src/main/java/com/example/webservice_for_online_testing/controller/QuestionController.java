@@ -97,10 +97,10 @@ public class QuestionController {
     /**
      * Method used for html button to redirect for main page
      * @return redirection for main page
-     * See src/main/resources/templates/index.html in templates.
+     * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping("get_to_index")
     public String backToIndex() {
-        return "redirect:/index";
+        return "redirect:/index_teacher";
     }
 }

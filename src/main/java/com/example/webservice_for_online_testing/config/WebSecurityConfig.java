@@ -5,12 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
  * Main class that configures all access permissions for different pages for two types of users
@@ -20,6 +20,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new MySimpleUrlAuthenticationSuccessHandler();
+    }
+
     /**
      * Method divides access permission for TEACHER role and USER role
      * and provides all users for specific pages.
@@ -30,16 +37,19 @@ public class WebSecurityConfig {
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable();
         http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/greeting", "/author", "/css/**", "/js/**").permitAll()
-                        .requestMatchers("/index", "/new_test", "/edit_test/*", "edit_questions/*", "/tests_results", "/histogram").hasRole("TEACHER")
-                        .requestMatchers("/index_student", "/student_testing/*", "/preresult", "/my_results").hasRole("STUDENT")
-                .anyRequest()
-                .authenticated())
+                .requestMatchers( "/css/**", "/js/**", "/", "/index").permitAll()
+                .requestMatchers("/index_teacher", "/new_test", "/edit/*", "/edit_questions/*", "/show_results", "/histogram").hasRole("TEACHER")
+                .requestMatchers("/index_student", "/student_testing/*", "/preresult", "/my_results").hasRole("STUDENT")
+                .anyRequest().authenticated())
                 .formLogin((form) -> form
                         .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .successHandler(myAuthenticationSuccessHandler())
                         .permitAll())
-                .logout(LogoutConfigurer::permitAll);
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/"));
         return http.build();
     }
 

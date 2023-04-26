@@ -9,7 +9,7 @@
     <link type="text/css" rel="stylesheet" href="/css/hrefs.css" th:href="@{/css/hrefs.css}">
     <script type="text/javascript">
         function clearSearch() {
-            window.location = "[[@{/index}]]";
+            window.location = "[[@{/index_teacher}]]";
         }
     </script>
 </head>
@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-4">
             <h4>Поиск теста по любому критерию:</h4>
-            <form th:action="@{/index}">
+            <form th:action="@{/index_teacher}">
                 <input type="text" name="keyword" id="keyword" size="70" th:value="${keyword}"/>
                 <input type="submit" class="btn btn-success btn-sm" value="Поиск"/>
                 <input type="button" class="btn btn-warning btn-sm" value="Очистить" id="btnClear"
