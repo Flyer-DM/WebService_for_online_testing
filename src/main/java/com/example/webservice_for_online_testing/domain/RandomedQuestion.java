@@ -20,7 +20,7 @@ public class RandomedQuestion{
     /** @see Question#getProblem() */
     private final String problem;
 
-    /** filed that could be {@link Question#getAnswer()},
+    /** field that could be {@link Question#getAnswer()},
      * {@link Question#getVariant1() } or {@link Question#getVariant2() }*/
     private final String answer1;
 

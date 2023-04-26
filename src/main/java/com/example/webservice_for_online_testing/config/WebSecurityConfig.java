@@ -21,7 +21,10 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @EnableWebSecurity
 public class WebSecurityConfig {
 
-
+    /**
+     * @see MySimpleUrlAuthenticationSuccessHandler
+     * @return configuring behaviour after successful user authentication
+     */
     @Bean
     public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
         return new MySimpleUrlAuthenticationSuccessHandler();
