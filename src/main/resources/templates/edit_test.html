@@ -14,25 +14,25 @@
     </form>
 </div>
 <div class="outer-div">
-<blockquote class="blockquote text-center"><h1>Редактирование теста</h1></blockquote>
+    <blockquote class="blockquote text-center"><h1>Редактирование теста</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">
             <form action="#" th:action="@{/save}" th:object="${test}" method="post">
                 <table>
                     <tr>
-                        <td>ID теста:</td>
+                        <td class="td-edit">ID теста:</td>
                         <td><input type="text" th:field="*{id}" readonly="readonly"></td>
                     </tr>
                     <tr>
-                        <td><b>Тема теста:</b></td>
+                        <td class="td-edit"><b>Тема теста:</b></td>
                         <td><input required th:field="*{topic}"></td>
                     </tr>
                     <tr>
-                        <td><b>Время начала:</b></td>
+                        <td class="td-edit"><b>Время начала:</b></td>
                         <td><input type="date" required th:field="*{start_time}"></td>
                     </tr>
                     <tr>
-                        <td><b>Время окончания:</b></td>
+                        <td class="td-edit"><b>Время окончания:</b></td>
                         <td><input type="date" required th:field="*{end_time}"></td>
                     </tr>
                     <tr type="hidden" style="display:none;">
@@ -40,8 +40,10 @@
                         <td><input type="text" th:field="*{attempts}" readonly="readonly"></td>
                     </tr>
                     <tr>
-                        <td colspan="2">
-                            <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Отправить</button>
+                        <td colspan="2" class="td-edit">
+                            <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false"
+                                    >Отправить
+                            </button>
                         </td>
                     </tr>
                 </table>

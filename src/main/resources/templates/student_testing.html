@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Информационно-справочная система онлайн-тестирования</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link type="text/css" rel="stylesheet" href="../static/css/bg.css" th:href="@{/css/bg.css}">
-  <script type="text/javascript" src="/static/js/timer.js" th:src="@{/js/timer.js}"></script>
+    <meta charset="UTF-8">
+    <title>Информационно-справочная система онлайн-тестирования</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../static/css/bg.css" th:href="@{/css/bg.css}">
+    <script type="text/javascript" src="/static/js/timer.js" th:src="@{/js/timer.js}"></script>
 </head>
 <body th:onLoad="getSecs()" id="testing">
 <div>
-  <div>
-    <form th:action="@{/logout}" method="post">
-      <input type="submit" value="Выйти">
-    </form>
-  </div>
-  <div>
-    <form th:action="@{/get_to_index_student}" method="post">
-      <input type="submit" value="Назад">
-    </form>
-    <div><h3>Время прохождения теста:<span id='timer-counter' style='font-weight:bold;'></span></h3>
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти">
+        </form>
     </div>
-  </div>
-  <blockquote class="blockquote text-center">
-    <h1>Решение теста <b th:text="${question.test_id.topic}"></b></h1>
-  </blockquote>
-  <form method="post" th:action="@{/save_answers}">
-    <table id="1" class="table table-striped table-hover">
-      <thead>
-      <tr>
-        <th scope="col">Вопрос</th>
-        <th scope="col">Ваш ответ</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="RandomedQuestion: ${questionList}">
-        <input type="hidden" name="questionID" th:value="${RandomedQuestion.id}">
-        <th scope="row" class="text-black" th:text="${RandomedQuestion.problem}"></th>
-        <th scope="row" class="text-black">
-          <select required="required" name="questionIDAnswer">
-              <option selected>--Выберите ответ--</option>
-              <option th:value="${RandomedQuestion.answer1}" th:text="${RandomedQuestion.answer1}"></option>
-              <option th:value="${RandomedQuestion.answer2}" th:text="${RandomedQuestion.answer2}"></option>
-              <option th:value="${RandomedQuestion.answer3}" th:text="${RandomedQuestion.answer3}"></option>
-          </select>
-        </th>
-      </tr>
-      </tbody>
-    </table>
-    <input type="submit" value="Сохранить">
-  </form>
+    <div>
+        <form th:action="@{/get_to_index_student}" method="post">
+            <input type="submit" value="Назад">
+        </form>
+        <div><h3>Время прохождения теста:<span id='timer-counter' style='font-weight:bold;'></span></h3>
+        </div>
+    </div>
+    <blockquote class="blockquote text-center">
+        <h1>Решение теста <b th:text="${question.test_id.topic}"></b></h1>
+    </blockquote>
+    <form method="post" th:action="@{/save_answers}">
+        <table id="1" class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Вопрос</th>
+                <th scope="col">Ваш ответ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="RandomedQuestion: ${questionList}">
+                <input type="hidden" name="questionID" th:value="${RandomedQuestion.id}">
+                <th scope="row" class="text-black" th:text="${RandomedQuestion.problem}"></th>
+                <th scope="row" class="text-black">
+                    <select required="required" name="questionIDAnswer">
+                        <option selected>--Выберите ответ--</option>
+                        <option th:value="${RandomedQuestion.answer1}" th:text="${RandomedQuestion.answer1}"></option>
+                        <option th:value="${RandomedQuestion.answer2}" th:text="${RandomedQuestion.answer2}"></option>
+                        <option th:value="${RandomedQuestion.answer3}" th:text="${RandomedQuestion.answer3}"></option>
+                    </select>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Сохранить">
+    </form>
 </div>
 </body>
 </html>

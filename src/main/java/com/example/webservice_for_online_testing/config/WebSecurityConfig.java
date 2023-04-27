@@ -1,6 +1,7 @@
 package com.example.webservice_for_online_testing.config;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,6 +21,22 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
+    /** Value for student`s login hided from user in application.properties */
+    @Value("${studentLogin}")
+    private String studentLogin;
+
+    /** Value for student`s password hided from user in application.properties */
+    @Value("${studentPassword}")
+    private String studentPassword;
+
+    /** Value for teachers`s login hided from user in application.properties */
+    @Value("${teacherLogin}")
+    private String teacherLogin;
+
+    /** Value for teachers`s password hided from user in application.properties */
+    @Value("${teacherPassword}")
+    private String teacherPassword;
 
     /**
      * @see MySimpleUrlAuthenticationSuccessHandler
@@ -47,8 +64,8 @@ public class WebSecurityConfig {
                 .requestMatchers("/index_student", "/student_testing/*", "/preresult", "/my_results").hasRole("STUDENT")
                 .anyRequest().authenticated())
                 .formLogin((form) -> form
-                        .loginPage("/login")
-                        .loginProcessingUrl("/login")
+                        .loginPage("/")
+                        .loginProcessingUrl("/")
                         .successHandler(myAuthenticationSuccessHandler())
                         .permitAll())
                 .logout(logout -> logout
@@ -63,14 +80,14 @@ public class WebSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
-                .username("1")
-                .password("1")
-                .roles("TEACHER") // роль преподавателя
+                .username(teacherLogin)
+                .password(teacherPassword)
+                .roles("TEACHER")
                 .build();
         UserDetails user2 = User.withDefaultPasswordEncoder()
-                .username("2")
-                .password("2")
-                .roles("STUDENT")  // роль студента
+                .username(studentLogin)
+                .password(studentPassword)
+                .roles("STUDENT")
                 .build();
         return new InMemoryUserDetailsManager(user, user2);
     }
