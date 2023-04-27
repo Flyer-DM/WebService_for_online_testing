@@ -28,13 +28,13 @@
                 <td>ID теста:</td>
                 <td><input type="text" th:field="*{test_id}" readonly="readonly"></td>
                 <td><b>Вопрос:</b></td>
-                <td><input type="text" required th:field="*{problem}"></td>
+                <td><input type="text" maxlength="500" required th:field="*{problem}"></td>
                 <td><b>Правильный ответ:</b></td>
-                <td><input type="text" required th:field="*{answer}"></td>
+                <td><input type="text" maxlength="500" required th:field="*{answer}"></td>
                 <td><b>Вариант ответа 1:</b></td>
-                <td><input type="text" required th:field="*{variant1}"></td>
+                <td><input type="text" maxlength="500" required th:field="*{variant1}"></td>
                 <td><b>Вариант ответа 2:</b></td>
-                <td><input type="text" required th:field="*{variant2}"></td>
+                <td><input type="text" maxlength="500" required th:field="*{variant2}"></td>
                 <td>
                     <button type="submit" class="btn btn-primary" data-tooggle="button" aria-pressed="false">Добавить
                     </button>

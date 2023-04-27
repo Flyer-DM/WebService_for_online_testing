@@ -36,15 +36,15 @@
                 </tr>
                 <tr>
                     <td><b>Ваша Фамилия*:</b></td>
-                    <td><input type="text" required th:field="*{student_surname}"></td>
+                    <td><input type="text" maxlength="50" required th:field="*{student_surname}"></td>
                 </tr>
                 <tr>
                     <td><b>Ваше имя*:</b></td>
-                    <td><input type="text" required th:field="*{student_name}"></td>
+                    <td><input type="text" maxlength="50" required th:field="*{student_name}"></td>
                 </tr>
                 <tr>
                     <td><b>Ваше Отчество:</b></td>
-                    <td><input type="text" th:field="*{student_patronymic}"></td>
+                    <td><input type="text" maxlength="50" th:field="*{student_patronymic}"></td>
                 </tr>
                 <input type="hidden" name="test_id" th:value="${test.id}">
                 <input type="hidden" name="result" th:value="${result}">
