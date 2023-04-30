@@ -6,8 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Used for static pages without server handling.
- * "login" page is handled by WebSecurityConfig
- * and "greeting" page is first page after login with links to users` pages.
+ * "login" page is handled by WebSecurityConfig, and it is first page after authorization.
  * @see WebSecurityConfig
  * @author Kondrashov Dmitry
  * @version 1.0

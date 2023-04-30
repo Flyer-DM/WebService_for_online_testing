@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * Controller that handles start pages, that all users have access to
+ * Controller that handles start pages, that all users have access to.
  * @author Kondrashov Dmitry
  * @version 1.0
  */
@@ -13,7 +13,7 @@ public class LoginController {
 
     /**
      * Mapping handles first page of webservice.
-     * @return http name of greetings page
+     * @return http name of login page.
      * See src/main/resources/templates/greeting.html in templates.
      */
     @GetMapping("/")
@@ -23,7 +23,7 @@ public class LoginController {
 
     /**
      * Mapping handles page about author that contains main information about creator of the project and links
-     * @return http name of author page
+     * @return http name of author page.
      * See src/main/resources/templates/author.html in templates.
      */
     @GetMapping("/author")

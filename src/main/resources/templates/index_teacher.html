@@ -49,11 +49,10 @@
     </div>
 </nav>
 <div>
-    <blockquote class="blockquote text-center"><h1>Доступные тесты</h1></blockquote>
+    <blockquote class="blockquote text-center"><h1>Список тестов</h1></blockquote>
     <table id="1" class="table table-striped table-hover">
         <thead>
         <tr>
-            <th scope="col" class="text-black">ID теста</th>
             <th scope="col" class="text-black">Тема</th>
             <th scope="col" class="text-black">Время начала</th>
             <th scope="col" class="text-black">Время окончания</th>
@@ -62,8 +61,7 @@
         </thead>
         <tbody>
         <tr th:each="test: ${listTests}">
-            <th scope="row" class="text-black" th:text="${test.id}"></th>
-            <th scope="row" class="text-black" th:text="${test.topic}"></th>
+            <th scope="row" class="text-black th-shift" th:text="${test.topic}"></th>
             <th scope="row" class="text-black" th:text="${test.start_time}"></th>
             <th scope="row" class="text-black" th:text="${test.end_time}"></th>
             <th scope="row" class="text-black" th:text="${test.attempts}"></th>

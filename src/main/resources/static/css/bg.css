@@ -20,12 +20,13 @@
 }
 
 #testing {
-    background-image: url("https://img.freepik.com/free-vector/office-supplies-illustration_23-2147491135.jpg?1&w=826&t=st=1679595332~exp=1679595932~hmac=9e0a2e27968df7fddc8c6576ab2a4048976e7a13000777ef6b85636ea6a69c87");
+    background-image: url("https://celes.club/uploads/posts/2022-05/1653055181_52-celes-club-p-fon-dlya-kviza-krasivie-58.jpg");
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     object-fit: cover;
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -34,11 +35,25 @@ thead th {
     font-size:14pt;
     text-align:left;
 }
+
+select {
+    width: 100%;
+    font-size: 120%;
+}
+
 .outer-div {
     position: absolute;
     bottom: 320px;
     width: 100%;
 }
+
 .td-edit {
     padding-left: 80px;
+}
+
+.th-shift {
+    width: 700px;
+    margin: 0;
+    padding: 0;
+    word-break: break-all;
 }

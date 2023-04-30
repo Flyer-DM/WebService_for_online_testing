@@ -25,7 +25,7 @@ public class QuestionController {
 
     /**
      * Constructor for Question controller.
-     * @param dataBaseService connects main service for handling all users` modification in database
+     * @param dataBaseService connects main service for handling all user`s modification in database
      * {@link QuestionController#dataBaseService}
      */
     @Autowired
@@ -35,13 +35,13 @@ public class QuestionController {
 
     /**
      * Method opens a page contains list of Questions for Test by its id and form to add new Questions.
-     * @see QuestionController#AddQuestion(String, String, String, String, Long) method saves new Question object
+     * @see QuestionController#AddQuestion(String, String, String, String, Long) Method saves new Question object
      * to database and connects it with test by ip
      * @see Question Question class
      * @see QuestionController#deleteQuestion(Long, Long) Method deletes existing Question object from database
      * @see QuestionController#backToIndex() Method redirects for main page
-     * @param id (parameter got from url) id of the test for which we need to edit the questions.
-     * @return folder with both Model and View - a html page with some already preset parameters
+     * @param id (parameter got from url) id of the test for which user needs to edit the questions
+     * @return folder with both Model and View - a html page with some already preset parameters.
      * See src/main/resources/templates/edit_questions.html in templates.
      */
     @RequestMapping("/edit_questions/{id}")
@@ -56,14 +56,14 @@ public class QuestionController {
     }
 
     /**
-     * Method saves new Question to database, connects it by id with test and updates page
+     * Method saves new Question to database, connects it by id with test and updates page.
      * @see Question Question class
      * @param problem content of the question
      * @param answer the right answer for question
      * @param variant1 wrong answer for question for possible choose
      * @param variant2 second wrong answer for question for possible choose
      * @param test_id id of the test to connect Question object with
-     * @return folder with both Model and View - a html page with some already preset parameters
+     * @return folder with both Model and View - a html page with some already preset parameters.
      * See src/main/resources/templates/edit_questions.html in templates.
      */
     @RequestMapping(value = "/save_new_question", method = RequestMethod.POST)
@@ -82,11 +82,11 @@ public class QuestionController {
     }
 
     /**
-     * Method deletes Question object from database
+     * Method deletes Question object from database.
      * @see Question Question class
      * @param id id of the Question to delete (on delete cascade)
      * @param test_id id of the Test object Questions are connected to in order to open appropriate page
-     * @return result of {@link QuestionController#showNewQuestionsForm(Long)} method by test_id field
+     * @return result of {@link QuestionController#showNewQuestionsForm(Long)} method by test_id field.
      */
     @RequestMapping("/delete_question/{id}/{test_id}")
     public ModelAndView deleteQuestion(@PathVariable(name = "id") Long id, @PathVariable(name = "test_id") Long test_id) {
@@ -96,7 +96,7 @@ public class QuestionController {
 
     /**
      * Method used for html button to redirect for main page
-     * @return redirection for main page
+     * @return redirection for main page.
      * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping("get_to_index")

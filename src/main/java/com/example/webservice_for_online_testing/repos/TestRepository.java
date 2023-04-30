@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Interface with {@link Repository} annotation that used as a mechanism for encapsulating storage, retrieval,
  * and search behavior which emulates a collection of objects. Contains SQL Query that returns list of Test
- * objects according to specific keyword
+ * objects according to specific keyword.
  * @see Test
  * @author Kondrashov Dmitry
  * @version 1.0

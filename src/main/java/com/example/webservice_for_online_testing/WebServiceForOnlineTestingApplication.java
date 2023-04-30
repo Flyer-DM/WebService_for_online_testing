@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
- * Main class runs Web service
+ * Main class runs Web service.
  * @author Kondrashov Dmitry
  * @version 1.0
  */
@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class WebServiceForOnlineTestingApplication extends SpringBootServletInitializer {
 
     /**
-     * main method of the program
+     * Main method of the program starts web-service.
      * @param args handles all arguments main method is assuming
      */
     public static void main(String[] args) {

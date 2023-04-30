@@ -16,7 +16,7 @@
 <body id="index">
 <div>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand text-black" href="/index_teacher" style="font-size: 40px">Система</a>
+        <a class="navbar-brand text-black" href="/index_student" style="font-size: 40px">Система</a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="nav navbar-nav mx-auto">
                 <form class="d-flex" th:action="@{/index_student}">
@@ -43,7 +43,6 @@
     <table id="1" class="table table-striped table-hover">
         <thead>
         <tr>
-            <th scope="col" class="text-black">ID теста</th>
             <th scope="col" class="text-black">Тема</th>
             <th scope="col" class="text-black">Время начала</th>
             <th scope="col" class="text-black">Время окончания</th>
@@ -51,8 +50,7 @@
         </thead>
         <tbody>
         <tr th:each="test: ${listTests}">
-            <th scope="row" class="text-black" th:text="${test.id}"></th>
-            <th scope="row" class="text-black" th:text="${test.topic}"></th>
+            <th scope="row" class="text-black th-shift" th:text="${test.topic}"></th>
             <th scope="row" class="text-black" th:text="${test.start_time}"></th>
             <th scope="row" class="text-black" th:text="${test.end_time}"></th>
             <td>

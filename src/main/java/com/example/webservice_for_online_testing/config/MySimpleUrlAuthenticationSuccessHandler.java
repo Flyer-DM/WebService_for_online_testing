@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Override class for configuring behaviour after successful user authentication
+ * Override class for configuring behaviour after successful user authentication.
  * @author Kondrashov Dmitry
  * @version 1.0
  */
@@ -45,7 +45,7 @@ public class MySimpleUrlAuthenticationSuccessHandler
     }
 
     /**
-     * Method performs redirect for one of two main pages based user`s role
+     * Method performs redirection for one of two main pages based user`s role.
      * @param request request that gets after successful authentication
      * @param response response that would be sent after successful authentication
      * @param authentication the token for an authentication request
@@ -73,7 +73,7 @@ public class MySimpleUrlAuthenticationSuccessHandler
      * Method contains roles and pages to which redirect user based on his role.
      * If the role is unknown {@link IllegalStateException} may occur.
      * @param authentication name of role of the user that logged in webservice
-     * @return name of the html page to redirect
+     * @return name of the html page to redirect.
      * See src/main/resources/templates/index_teacher.html in templates.
      * See src/main/resources/templates/index_student.html in templates.
      */
@@ -96,7 +96,7 @@ public class MySimpleUrlAuthenticationSuccessHandler
     }
 
     /**
-     * Method will return the mapped URL for the first role the user has
+     * Method will return the mapped URL for the first role the user has.
      * @param request http request from which method will collect user`s role
      */
     protected void clearAuthenticationAttributes(HttpServletRequest request) {

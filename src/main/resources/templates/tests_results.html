@@ -34,7 +34,7 @@
         <tbody>
         <tr th:each="result: ${listResults}">
             <th scope="row" class="text-black" th:text="${result.id}"></th>
-            <th scope="row" class="text-black" th:text="${result.test_id.topic}"></th>
+            <th scope="row" class="text-black th-shift" th:text="${result.test_id.topic}"></th>
             <th scope="row" class="text-black" th:text="${result.student_name}"></th>
             <th scope="row" class="text-black" th:text="${result.student_surname}"></th>
             <th scope="row" class="text-black" th:text="${result.student_patronymic}"></th>

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Interface with {@link Repository} annotation that used as a mechanism for encapsulating storage, retrieval,
  * and search behavior which emulates a collection of objects. Contains SQL Query that returns list of StudentResult
- * objects according to fields "student_name" and "student_surname"
+ * objects according to fields "student_name" and "student_surname".
  * @see StudentResult
  * @author Kondrashov Dmitry
  * @version 1.0

@@ -15,23 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-#log {
-    width: 300px;
-    height: 50px;
-    border-radius: 5px;
-    padding: 10px;
-    display: block;
-    margin: auto;
-}
-#pswd {
-    width: 300px;
-    height: 50px;
-    border-radius: 5px;
-    padding: 10px;
-    display: block;
-    margin: auto;
-}
-#btn {
+#log, #pswd, #btn, #error {
     width: 300px;
     height: 50px;
     border-radius: 5px;

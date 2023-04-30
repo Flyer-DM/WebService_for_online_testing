@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Main controller for TEACHER with all mappings those handle pages and requests on index_teacher.html page,
+ * Main controller for TEACHER with all mappings those handle pages and requests,
  * that user with ROLE TEACHER has access to.
  * @see com.example.webservice_for_online_testing.config.WebSecurityConfig
  * @author Kondrashov Dmitry
@@ -28,7 +28,7 @@ public class MainController {
 
     /**
      * Constructor for Main controller.
-     * @param dataBaseService connects main service for handling all users` modification in database
+     * @param dataBaseService connects main service for handling all user`s modification in database
      * {@link MainController#dataBaseService}
      */
     @Autowired
@@ -48,9 +48,9 @@ public class MainController {
      * @see LoginController#authorPage() Method shows page with information about author
      * @see com.example.webservice_for_online_testing.config.WebSecurityConfig#securityFilterChain(HttpSecurity)
      * Method to logout from account
-     * @param model holder to add attributes insert data from java (keyword and list of Test objects).
-     * @param keyword keyword to filter data in search bar.
-     * @return http name of index_teacher page
+     * @param model holder to add attributes into html from java (keyword and list of Test objects)
+     * @param keyword keyword to filter data in search bar
+     * @return http name of index_teacher page.
      * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping("/index_teacher")
@@ -64,9 +64,9 @@ public class MainController {
     /**
      * Method opens page with form to add test to database.
      * @see QuestionController#backToIndex() Method redirects to main page
-     * @param model holder to add attributes insert data from java (Test class).
+     * @param model holder to add attributes into html from java (Test class)
      * @see Test Test class
-     * @return http name of page for adding test
+     * @return http name of page for adding test.
      * See src/main/resources/templates/new_test.html in templates.
      */
     @RequestMapping("/new_test")
@@ -81,7 +81,7 @@ public class MainController {
      * @see QuestionController#backToIndex() Method redirects to main page
      * @param test Test object to edit to, got by its id from database
      * @see Test Test class
-     * @return redirection for main page
+     * @return redirection for main page.
      * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -93,10 +93,10 @@ public class MainController {
     /**
      * Method saves new Test object to database.
      * @see Test Test class
-     * @param topic topic of the test made for.
-     * @param start_time date that reflects when test need to be started by students (start of the deadline).
-     * @param end_time date that reflects when test need to be ended (end of the deadline).
-     * @return redirection for main page
+     * @param topic topic of the test made for
+     * @param start_time date that reflects when test need to be started by students (start of the deadline)
+     * @param end_time date that reflects when test need to be ended (end of the deadline)
+     * @return redirection for main page.
      * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping(value = "/save_new_test", method = RequestMethod.POST)
@@ -111,8 +111,8 @@ public class MainController {
      * Method opens page for editing an existing test (Changing its topic, start date or end date).
      * @see Test Test class
      * @see QuestionController#backToIndex() to redirect to main page
-     * @param id (parameter got from url) id of the test that need to be modified.
-     * @return holder with both Model and View - a html page with some already preset parameters
+     * @param id (parameter got from url) id of the test that need to be modified
+     * @return holder with both Model and View - a html page with some already preset parameters.
      * See src/main/resources/templates/edit_test.html in templates.
      */
     @RequestMapping("/edit/{id}")
@@ -126,8 +126,8 @@ public class MainController {
     /**
      * Method deletes existing test from database from main page.
      * @see Test Test class
-     * @param id (parameter got from url) id of the test that need to be deleted.
-     * @return redirection for main page
+     * @param id (parameter got from url) id of the test that need to be deleted
+     * @return redirection for main page.
      * See src/main/resources/templates/index_teacher.html in templates.
      */
     @RequestMapping("/delete/{id}")
@@ -143,8 +143,8 @@ public class MainController {
      * @see QuestionController#backToIndex() Method redirects to main page
      * @see com.example.webservice_for_online_testing.config.WebSecurityConfig#securityFilterChain(HttpSecurity)
      * Method logouts from account
-     * @param model holder to add attributes insert data from java (StudentResults class).
-     * @return http name of page of students` results after testing
+     * @param model holder to add attributes into html from java (StudentResults class)
+     * @return http name of page with results of students after testing.
      * See src/main/resources/templates/tests_results.html in templates.
      */
     @RequestMapping(value = "/show_results", method = RequestMethod.GET)
@@ -157,8 +157,8 @@ public class MainController {
     /**
      * Method deletes existing StudentResult object from database from its page.
      * @see StudentResult StudentResult class
-     * @param id (parameter got from url) id of the studentResult that need to be deleted.
-     * @return redirection for page holding students` results
+     * @param id (parameter got from url) id of the studentResult that need to be deleted
+     * @return redirection for page holding students` results.
      * See src/main/resources/templates/test_results.html in templates.
      */
     @RequestMapping("/delete_result/{id}")
@@ -170,8 +170,8 @@ public class MainController {
     /**
      * Method opens html page with histogram data that shows solution frequency of every test from database.
      * @see Test Test class
-     * @param model holder to add attributes insert data from java (list of Test objects).
-     * @return http name of histogram page
+     * @param model holder to add attributes into html from java (list of Test objects)
+     * @return http name of histogram page.
      * See src/main/resources/templates/histogram.html in templates.
      */
     @RequestMapping("/histogram")

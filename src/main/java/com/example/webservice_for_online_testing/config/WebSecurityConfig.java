@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
- * Main class that configures all access permissions for different pages for two types of users
+ * Main class that configures all access permissions for different pages for two types of users.
  * @author Kondrashov Dmitry
  * @version 1.0
  */
@@ -50,10 +50,10 @@ public class WebSecurityConfig {
     /**
      * Method divides access permission for TEACHER role and USER role
      * and provides all users for specific pages.
-     * @param http allows configuring web based security for specific http requests.
+     * @param http allows to configure web security for specific http requests
      * @return SecurityFilterChain a filter chain which is capable of being matched against an HttpServletRequest
-     * in order to decide whether it applies to that request.
-     * @throws Exception any exception that can possibly raise.
+     * in order to decide whether it applies to that request
+     * @throws Exception any exception that can possibly raise
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -74,8 +74,8 @@ public class WebSecurityConfig {
     }
 
     /**
-     * Method save in memory types of users, their names and passwords.
-     * @return UserDetailsService service that saves default names and passwords for two types of users.
+     * Method saves in memory types of users, their logins and passwords.
+     * @return UserDetailsService service that saves default names and passwords for two types of users
      */
     @Bean
     public UserDetailsService userDetailsService() {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.boot.web.servlet.error.ErrorController;
 
 /**
- * Controller for handling server errors
+ * Controller for handling server errors.
  * @author Kondrashov Dmitry
  * @version 1.0
  */
@@ -51,8 +51,8 @@ public class TestingServiceErrorController implements ErrorController {
     }
 
     /**
-     * Method used for html button to redirect for greeting page
-     * @return http name of greeting page
+     * Method used for html button to redirect for greeting page.
+     * @return http name of greeting page.
      * See src/main/resources/templates/greeting.html in templates.
      */
     @RequestMapping("/greeting")
