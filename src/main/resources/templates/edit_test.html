@@ -19,7 +19,7 @@
         <div class="col-md-8 offset-md-4">
             <form action="#" th:action="@{/save}" th:object="${test}" method="post">
                 <table>
-                    <tr>
+                    <tr type="hidden" style="display:none;">
                         <td class="td-edit">ID теста:</td>
                         <td><input type="text" th:field="*{id}" readonly="readonly"></td>
                     </tr>
@@ -42,7 +42,7 @@
                     <tr>
                         <td colspan="2" class="td-edit">
                             <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false"
-                                    >Сохранить
+                            >Сохранить
                             </button>
                         </td>
                     </tr>
